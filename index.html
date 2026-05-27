@@ -1,66 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<body style="margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background-color: #f7f3eb; background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2270%22 height=%2270%22 viewBox=%220 0 70 70%22%3E%3Ctext x=%2220%22 y=%2245%22 font-size=%2228%22%3E🍞%3C/text%3E%3C/svg%3E'); font-family: sans-serif;">
+<body style="margin:0; height:100vh; background:#8da4ae; font-family:'Segoe UI', Tahoma, sans-serif; display:flex; justify-content:center; align-items:center;">
 
-    <div id="window" style="width: 900px; height: 550px; background: rgba(10, 95, 115, 0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px 8px 0 0; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <div style="width:800px; height:500px; background:rgba(255,255,255,0.25); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.4); border-radius:8px 8px 0 0; box-shadow:0 10px 30px rgba(0,0,0,0.5); display:flex; flex-direction:column;">
         
-        <div style="background: rgba(255,255,255,0.2); padding: 5px 10px; color: white; display: flex; justify-content: space-between;">
-            <span>📁 Loaf: the time machine for messengers.</span>
+        <div style="padding:5px 10px; color:white; display:flex; justify-content:space-between; align-items:center;">
+            <span>📁 Loaf: Time machine for messengers.</span>
+            <div>
+                <button style="width:25px; height:20px; background:linear-gradient(#f0f0f0, #ccc); border:1px solid #777; cursor:pointer;">—</button>
+                <button style="width:25px; height:20px; background:linear-gradient(#f0f0f0, #ccc); border:1px solid #777; cursor:pointer;">⬜</button>
+                <button style="width:25px; height:20px; background:linear-gradient(#e81123, #b30000); border:1px solid #777; color:white; cursor:pointer;">X</button>
+            </div>
         </div>
 
-        <div style="flex-grow: 1; background: #eef3f7; display: flex;">
-            <div style="width: 200px; padding: 15px; border-right: 1px solid #ccc;">
-                <b>Connections</b>
+        <div style="flex-grow:1; background:rgba(255,255,255,0.7); padding:20px;">
+            <div style="font-weight:bold; margin-bottom:15px;">Connections</div>
+            
+            <div style="margin-bottom:10px;">
+                <span style="display:inline-block; width:12px; height:12px; background:#ffcc00; border-radius:50%; border:1px solid #999; margin-right:5px;"></span>
+                AOL (OSCAR) - Online
             </div>
-
-            <div style="padding: 20px; flex-grow: 1;">
-                <div id="login-container">
-                    <h3>Sign In</h3>
-                    <form id="login-form">
-                        <input type="text" placeholder="Name" required style="display:block; margin: 10px 0; padding: 8px;">
-                        <input type="password" placeholder="Password" required style="display:block; margin: 10px 0; padding: 8px;">
-                        <button type="submit">Sign In</button>
-                    </form>
-                    <p style="margin-top: 20px;">No account? <a href="#" id="show-register" style="color: blue; cursor: pointer;">Create an Account ✨</a></p>
-                </div>
-
-                <div id="register-container" style="display: none;">
-                    <h3>Register New User</h3>
-                    <form id="register-form">
-                        <input type="text" placeholder="Desired Handle" required style="display:block; margin: 10px 0; padding: 8px;">
-                        <input type="password" placeholder="New Password" required style="display:block; margin: 10px 0; padding: 8px;">
-                        <button type="submit">Complete Sign Up</button>
-                    </form>
-                    <p style="margin-top: 20px;"><a href="#" id="show-login" style="color: blue; cursor: pointer;">Back to Sign In</a></p>
-                </div>
+            <div>
+                <span style="display:inline-block; width:12px; height:12px; background:#00cc00; border-radius:50%; border:1px solid #999; margin-right:5px;"></span>
+                ICQ Network - Available
             </div>
         </div>
     </div>
-
-    <script>
-        const loginContainer = document.getElementById('login-container');
-        const registerContainer = document.getElementById('register-container');
-
-        // Toggle to Registration
-        document.getElementById('show-register').addEventListener('click', (e) => {
-            e.preventDefault();
-            loginContainer.style.display = 'none';
-            registerContainer.style.display = 'block';
-        });
-
-        // Toggle back to Login
-        document.getElementById('show-login').addEventListener('click', (e) => {
-            e.preventDefault();
-            registerContainer.style.display = 'none';
-            loginContainer.style.display = 'block';
-        });
-
-        // Registration Logic
-        document.getElementById('register-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert("Account registered! You can now use your credentials to sign in.");
-            location.reload(); 
-        });
-    </script>
 </body>
 </html>
