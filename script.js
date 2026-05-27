@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://127.0.0.1:8080";
+const BACKEND_URL = "http://login.loaf.server.chat:8080";
 const authToggle = document.getElementById('auth-toggle');
 const loginForm = document.getElementById('login-form');
 const registerForm = document.getElementById('register-form');
