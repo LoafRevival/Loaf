@@ -1,48 +1,89 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background: url('https://wallpaperaccess.com/full/2161749.jpg') no-repeat center center fixed; 
-    background-size: cover;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.aero-window {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px) saturate(160%);
-    -webkit-backdrop-filter: blur(12px) saturate(160%);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-top: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 8px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-}
-
-.aero-header {
-    background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 100%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    padding: 10px 15px;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Clean bread background grid - 100% sharp vector layout */
+    background-color: #f7f3eb;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='28'%3E🍞%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat;
+    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+/* --- TEAL AERO WINDOW FRAME --- */
+.window-container {
+    width: 950px; 
+    height: 600px;
+    background: rgba(10, 95, 115, 0.45); /* True Windows 7 Aero Teal Glass */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px 8px 0 0;
+    
+    /* Frosted glass effect blurs the background loaves passing underneath */
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35), 
+                inset 0 1px 1px rgba(255, 255, 255, 0.5);
+    padding: 5px; 
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- WINDOW TITLE BAR --- */
+.title-bar {
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    color: #ffffff;
+    font-size: 0.85rem;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.6), 1px 1px 2px rgba(0,0,0,0.6);
+}
+
+/* Labeled Window Controls Customization */
+.window-controls {
+    display: flex;
+    gap: 5px;
     align-items: center;
 }
 
-.loaf-brand {
-    font-weight: 800;
-    color: #ffb74d; 
-    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+.win-btn {
+    width: 26px;
+    height: 18px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.15));
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.7);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
 }
 
-.aero-input {
-    background: rgba(0, 0, 0, 0.4) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    color: #fff !important;
-    border-radius: 4px !important;
+.win-btn:hover {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
 }
 
-.aero-input:focus {
-    background: rgba(0, 0, 0, 0.6) !important;
-    border-color: #64b5f6 !important;
-    box-shadow: 0 0 8px rgba(100, 181, 246, 0.5) !important;
-}
+.win-btn.close {
+    background: linear-gradient(to bottom, #f37a7a, #d93939);
+    border-color: #7a1a1a;
+    width: 45px;
+    color: #ffffff;
+    font-size: 11px;
+    text-shadow
