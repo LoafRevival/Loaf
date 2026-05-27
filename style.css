@@ -1,27 +1,20 @@
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* This adds your bread background */
-    background-color: #f7f3eb;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='28'%3E🍞%3C/text%3E%3C/svg%3E");
-    background-repeat: repeat;
+body { 
+    margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center;
+    background: #f7f3eb url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2270%22 height=%2270%22 viewBox=%220 0 70 70%22%3E%3Ctext x=%2220%22 y=%2245%22 font-size=%2228%22%3E🍞%3C/text%3E%3C/svg%3E');
     font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
-.window-container {
-    width: 950px;
-    height: 600px;
-    /* This creates the Aero teal glass look */
-    background: rgba(10, 95, 115, 0.45);
-    backdrop-filter: blur(12px) saturate(140%);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 8px 8px 0 0;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
+.win { 
+    width: 900px; height: 550px; background: rgba(10, 95, 115, 0.45); 
+    backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); 
+    border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
+
+.header { background: rgba(255,255,255,0.2); padding: 5px 15px; color: white; display: flex; justify-content: space-between; }
+.body { display: flex; flex-grow: 1; background: #eef3f7; }
+.sidebar { width: 220px; padding: 20px; border-right: 1px solid #ccc; }
+.content { padding: 40px; flex-grow: 1; }
+.box { background: white; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+input { display: block; width: 100%; margin: 10px 0; padding: 8px; }
+.status-light { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
