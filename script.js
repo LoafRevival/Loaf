@@ -1,4 +1,3 @@
-const BACKEND_URL = "http://login.loaf.server.chat:8080";
 const authToggle = document.getElementById('auth-toggle');
 const loginForm = document.getElementById('login-form');
 const registerForm = document.getElementById('register-form');
@@ -9,35 +8,77 @@ const dashboardContainer = document.getElementById('dashboard-container');
 const displayUsername = document.getElementById('display-username');
 const btnLogout = document.getElementById('btn-logout');
 
+// Initialize local database vault in browser memory
+if (!localStorage.getItem('retro_accounts')) {
+    localStorage.setItem('retro_accounts', JSON.stringify({}));
+}
+
 authToggle.addEventListener('click', (e) => {
     e.preventDefault();
+    errorMsg.classList.add('d-none');
+    successMsg.classList.add('d-none');
     registerForm.classList.toggle('d-none');
     loginForm.classList.toggle('d-none');
-    authToggle.textContent = loginForm.classList.contains('d-none') ? "Back to Sign On" : "Create an Account";
+    authToggle.textContent = loginForm.classList.contains('d-none') ? "Back to Sign On" : "Create an Account ✨";
 });
 
-registerForm.addEventListener('submit', async (e) => {
+// SECURE USER REGISTRATION
+registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    try {
-        await fetch(`${BACKEND_URL}/api/register`, {
-            method: 'POST', mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: document.getElementById('reg-user').value, password: document.getElementById('reg-pass').value })
-        });
-        successMsg.textContent = "Request sent! Try signing on.";
-        successMsg.classList.remove('d-none'); registerForm.reset();
-    } catch {
-        errorMsg.textContent = "Server connection refused."; errorMsg.classList.remove('d-none');
+    errorMsg.classList.add('d-none');
+    successMsg.classList.add('d-none');
+
+    const username = document.getElementById('reg-user').value.trim().toLowerCase();
+    const password = document.getElementById('reg-pass').value;
+
+    if (!username || !password) {
+        errorMsg.textContent = "Fields cannot be blank!";
+        errorMsg.classList.remove('d-none');
+        return;
+    }
+
+    const accounts = JSON.parse(localStorage.getItem('retro_accounts'));
+
+    if (accounts[username]) {
+        errorMsg.textContent = "Error: Screen name is already taken!";
+        errorMsg.classList.remove('d-none');
+    } else {
+        // Save account securely
+        accounts[username] = password;
+        localStorage.setItem('retro_accounts', JSON.stringify(accounts));
+        
+        successMsg.textContent = "Account baked successfully! You can now Sign On.";
+        successMsg.classList.remove('d-none');
+        registerForm.reset();
     }
 });
 
+// STRICT PASSWORD VALIDATION SIGN-ON
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    displayUsername.textContent = document.getElementById('login-user').value;
-    authContainer.classList.add('d-none'); dashboardContainer.classList.remove('d-none');
-    fetch(`${BACKEND_URL}/api/register`, { method: 'GET', mode: 'no-cors' }).catch(() => null);
+    errorMsg.classList.add('d-none');
+    successMsg.classList.add('d-none');
+
+    const username = document.getElementById('login-user').value.trim().toLowerCase();
+    const password = document.getElementById('login-pass').value;
+
+    const accounts = JSON.parse(localStorage.getItem('retro_accounts'));
+
+    // STRICT CHECK: Username must exist AND password must match exactly
+    if (accounts[username] && accounts[username] === password) {
+        // Access Granted!
+        displayUsername.textContent = username;
+        authContainer.classList.add('d-none');
+        dashboardContainer.classList.remove('d-none');
+    } else {
+        // Access Denied!
+        errorMsg.textContent = "Access Denied: Invalid Screen Name or Password.";
+        errorMsg.classList.remove('d-none');
+    }
 });
 
 btnLogout.addEventListener('click', () => {
-    authContainer.classList.remove('d-none'); dashboardContainer.classList.add('d-none');
+    authContainer.classList.remove('d-none');
+    dashboardContainer.classList.add('d-none');
+    loginForm.reset();
 });
