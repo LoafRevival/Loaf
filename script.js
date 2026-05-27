@@ -37,13 +37,13 @@ registerForm.addEventListener('submit', (e) => {
         return;
     }
 
-    const accounts = JSON.parse(localStorage.getItem('retro_accounts'));
+    const accounts = JSON.parse(localStorage.getItem('retro_accounts')) || {};
 
     if (accounts[username]) {
         errorMsg.textContent = "Error: Screen name is already taken!";
         errorMsg.classList.remove('d-none');
     } else {
-        // Save account securely
+        // Save account securely inside the local vault
         accounts[username] = password;
         localStorage.setItem('retro_accounts', JSON.stringify(accounts));
         
@@ -62,7 +62,7 @@ loginForm.addEventListener('submit', (e) => {
     const username = document.getElementById('login-user').value.trim().toLowerCase();
     const password = document.getElementById('login-pass').value;
 
-    const accounts = JSON.parse(localStorage.getItem('retro_accounts'));
+    const accounts = JSON.parse(localStorage.getItem('retro_accounts')) || {};
 
     // STRICT CHECK: Username must exist AND password must match exactly
     if (accounts[username] && accounts[username] === password) {
@@ -71,7 +71,7 @@ loginForm.addEventListener('submit', (e) => {
         authContainer.classList.add('d-none');
         dashboardContainer.classList.remove('d-none');
     } else {
-        // Access Denied!
+        // Access Denied! (This blocks wrong passwords completely)
         errorMsg.textContent = "Access Denied: Invalid Screen Name or Password.";
         errorMsg.classList.remove('d-none');
     }
