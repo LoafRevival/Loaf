@@ -7,10 +7,28 @@ const authContainer = document.getElementById('auth-container');
 const dashboardContainer = document.getElementById('dashboard-container');
 const displayUsername = document.getElementById('display-username');
 const btnLogout = document.getElementById('btn-logout');
+const countElement = document.getElementById('total-users');
+const saveProfileBtn = document.getElementById('save-profile');
+const profileBadge = document.getElementById('user-badge');
+const customStatusInput = document.getElementById('custom-status');
 
-// Initialize local database vault in browser memory
 if (!localStorage.getItem('retro_accounts')) {
     localStorage.setItem('retro_accounts', JSON.stringify({}));
+}
+
+function updateNetworkStats() {
+    const accounts = JSON.parse(localStorage.getItem('retro_accounts')) || {};
+    if (countElement) {
+        const totalCount = Object.keys(accounts).length;
+        countElement.textContent = `${totalCount} Accounts Configured`;
+    }
+}
+
+function loadUserProfile(username) {
+    const savedBadge = localStorage.getItem(`${username}_badge`) || "Classic User 💾";
+    const savedStatus = localStorage.getItem(`${username}_status`) || "Away from keyboard";
+    if (profileBadge) profileBadge.value = savedBadge;
+    if (customStatusInput) customStatusInput.value = savedStatus;
 }
 
 authToggle.addEventListener('click', (e) => {
@@ -22,7 +40,6 @@ authToggle.addEventListener('click', (e) => {
     authToggle.textContent = loginForm.classList.contains('d-none') ? "Back to Sign On" : "Create an Account ✨";
 });
 
-// SECURE USER REGISTRATION
 registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
     errorMsg.classList.add('d-none');
@@ -43,17 +60,15 @@ registerForm.addEventListener('submit', (e) => {
         errorMsg.textContent = "Error: Screen name is already taken!";
         errorMsg.classList.remove('d-none');
     } else {
-        // Save account securely inside the local vault
         accounts[username] = password;
         localStorage.setItem('retro_accounts', JSON.stringify(accounts));
-        
         successMsg.textContent = "Account baked successfully! You can now Sign On.";
         successMsg.classList.remove('d-none');
         registerForm.reset();
+        updateNetworkStats();
     }
 });
 
-// STRICT PASSWORD VALIDATION SIGN-ON
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     errorMsg.classList.add('d-none');
@@ -64,21 +79,32 @@ loginForm.addEventListener('submit', (e) => {
 
     const accounts = JSON.parse(localStorage.getItem('retro_accounts')) || {};
 
-    // STRICT CHECK: Username must exist AND password must match exactly
     if (accounts[username] && accounts[username] === password) {
-        // Access Granted!
         displayUsername.textContent = username;
         authContainer.classList.add('d-none');
         dashboardContainer.classList.remove('d-none');
+        loadUserProfile(username);
     } else {
-        // Access Denied! (This blocks wrong passwords completely)
         errorMsg.textContent = "Access Denied: Invalid Screen Name or Password.";
         errorMsg.classList.remove('d-none');
     }
 });
+
+if (saveProfileBtn) {
+    saveProfileBtn.addEventListener('click', () => {
+        const currentUser = displayUsername.textContent;
+        if (currentUser) {
+            localStorage.setItem(`${currentUser}_badge`, profileBadge.value);
+            localStorage.setItem(`${currentUser}_status`, customStatusInput.value);
+            alert("Profile metadata updated inside the database vault!");
+        }
+    });
+}
 
 btnLogout.addEventListener('click', () => {
     authContainer.classList.remove('d-none');
     dashboardContainer.classList.add('d-none');
     loginForm.reset();
 });
+
+updateNetworkStats();
