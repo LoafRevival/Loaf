@@ -3,169 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loaf: ICQ and AOL revival!</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>LoafWebsite - Aero Edition</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            background: url('https://wallpaperaccess.com/full/2161749.jpg') no-repeat center center fixed; 
-            background-size: cover;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
+            /* Warm background with an infinite grid of sharp bread emojis */
+            background-color: #f7f3eb;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='30'%3E🍞%3C/text%3E%3C/svg%3E");
+            background-repeat: repeat;
+            
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Windows 7 default font */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
+
+        /* --- THE LOG IN AERO WINDOW --- */
         .aero-window {
-            background: rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(15px) saturate(160%);
-            -webkit-backdrop-filter: blur(15px) saturate(160%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            width: 360px;
+            background: rgba(255, 255, 255, 0.25); /* Translucent glass body */
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-top: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 8px;
+            
+            /* The magic trick: blurs the loaves behind the box! */
+            backdrop-filter: blur(12px) saturate(120%);
+            -webkit-backdrop-filter: blur(12px) saturate(120%);
+            
+            /* Aero glass drop shadow and inner reflection */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            padding: 20px;
+            text-align: center;
+            z-index: 2;
         }
-        .aero-header {
-            background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+        .aero-title {
+            color: #1e395b;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.8); /* Windows 7 text glow */
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: #222;
+            margin-bottom: 5px;
             font-weight: bold;
-            padding: 12px 20px;
-            border-top-left-radius: 11px;
-            border-top-right-radius: 11px;
         }
-        .aero-input {
-            background: rgba(255, 255, 255, 0.1) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            color: white !important;
+
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #a0a0a0;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.85);
+            font-family: inherit;
         }
-        .aero-input:focus {
-            background: rgba(255, 255, 255, 0.2) !important;
-            border-color: #38bdf8 !important;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5) !important;
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #3d94ff;
+            box-shadow: 0 0 5px rgba(61, 148, 255, 0.6);
         }
-        .aero-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+
+        /* Shiny Aero-style blue button */
+        .aero-btn {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #3c7fb1;
+            border-radius: 4px;
+            background: linear-gradient(to bottom, #cedff2 0%, #a9c7e8 50%, #7da2cc 51%, #a3c5ec 100%);
+            color: #0c2238;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.15);
         }
-        .loaf-brand {
-            font-weight: 800;
-            color: #ffb74d;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+
+        .aero-btn:hover {
+            background: linear-gradient(to bottom, #e3effc 0%, #bcd6f2 50%, #9bc1ea 51%, #bce0fd 100%);
+        }
+
+        /* --- THE BOTTOM AERO TASKBAR --- */
+        .aero-taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            
+            /* Same frosted glass overlay */
+            background: rgba(255, 255, 255, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(15px) saturate(130%);
+            -webkit-backdrop-filter: blur(15px) saturate(130%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            color: #1e395b;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
+            z-index: 3;
+        }
+
+        .start-orb {
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, #52a1ff 0%, #0054c2 70%, #002d69 100%);
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 0 6px rgba(0,84,194,0.8);
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .start-orb:hover {
+            filter: brightness(1.2);
         }
     </style>
 </head>
 <body>
 
-<div class="container py-5">
+<div class="aero-window">
+    <div class="aero-title">Loaf System Login</div>
     
-    <div class="text-center mb-5">
-        <h1 class="display-4 loaf-brand">Loaf</h1>
-        <p class="lead text-white" style="text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Connect to loaf.oscar.open.server</p>
+    <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter loaf user...">
     </div>
-
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            
-            <div class="aero-window mb-4" id="auth-container">
-                <div class="aero-header d-flex align-items-center">
-                    <img src="https://img.icons8.com/color/24/msn.png" class="me-2" alt="icon"> 
-                    Loaf Network Sign-On
-                </div>
-                <div class="card-body p-4">
-                    <div id="error-msg" class="alert alert-danger d-none bg-danger text-white border-0"></div>
-                    <div id="success-msg" class="alert alert-success d-none bg-success text-white border-0"></div>
-
-                    <form id="login-form">
-                        <div class="mb-3">
-                            <label class="form-label">Screen Name</label>
-                            <input type="text" id="login-user" class="form-control aero-input" placeholder="example@loaf">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" id="login-pass" class="form-control aero-input">
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100 fw-bold">Sign On</button>
-                    </form>
-
-                    <form id="register-form" class="d-none">
-                        <div class="mb-3">
-                            <label class="form-label">Choose Screen Name</label>
-                            <input type="text" id="reg-user" class="form-control aero-input" placeholder="new_buddy">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Create Password</label>
-                            <input type="password" id="reg-pass" class="form-control aero-input">
-                        </div>
-                        <button type="submit" class="btn btn-success w-100 fw-bold">Register Account</button>
-                    </form>
-
-                    <hr class="bg-white opacity-25">
-                    <div class="text-center">
-                        <a href="#" id="auth-toggle" class="text-info fw-bold text-decoration-none">Create an Account</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="aero-window mb-4 d-none" id="dashboard-container">
-                <div class="aero-header d-flex align-items-center">
-                    <img src="https://img.icons8.com/color/24/checked-user-male.png" class="me-2" alt="user-icon">
-                    Welcome, <span id="display-username" class="ms-1 text-warning"></span>!
-                </div>
-                <div class="card-body p-4">
-                    <h4 class="mb-3 border-bottom border-secondary pb-2">Network Controls</h4>
-                    <div class="d-flex gap-2 mb-4">
-                        <button id="toggle-node" class="btn btn-outline-light btn-sm">Toggle Node State</button>
-                        <button id="flush-buffer" class="btn btn-outline-light btn-sm">Flush Log Buffer</button>
-                    </div>
-
-                    <h4 class="mb-3 border-bottom border-secondary pb-2">BOS Status</h4>
-                    <div class="p-3 bg-black bg-opacity-40 rounded border border-secondary mb-4" style="font-family: monospace;">
-                        <p class="mb-1 text-light">Host: <span class="text-info">login.loaf.server.chat</span></p>
-                        <p class="mb-1 text-light">Port: <span class="text-info">5190</span></p>
-                        <p class="mb-1 text-primary">[SYS] Monitoring active retro clients...</p>
-                        <p class="mb-0 text-success">[OK] Core linked to login.loaf.server.chat ✨</p>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Network Status Badge</label>
-                        <select id="user-badge" class="form-select aero-input">
-                            <option value="Classic User 💾">Classic User 💾</option>
-                            <option value="Loaf Dev 🍞">Loaf Dev 🍞</option>
-                            <option value="Retro Beta Tester ">Retro Beta Tester </option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Custom Status Message</label>
-                        <input type="text" id="custom-status" class="form-control aero-input" placeholder="Away from keyboard">
-                    </div>
-                    <button id="save-profile" class="btn btn-info w-100 fw-bold mb-3 text-white">Save Profile Data</button>
-                    <button id="btn-logout" class="btn btn-danger w-100 fw-bold">Log Out</button>
-                </div>
-            </div>
-
-            <div class="aero-window">
-                <div class="aero-header d-flex align-items-center">
-                    <img src="https://img.icons8.com/color/24/servers-group.png" class="me-2" alt="server-icon"> 
-                    
-                </div>
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span><strong>Server Status:</strong></span>
-                        <span id="network-badge" class="badge bg-success px-3 py-2">ONLINE 24/7</span>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span><strong>Active Protocol:</strong></span>
-                        <span class="badge bg-info">OSCAR (AIM Client v5.x)</span>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span><strong>Registered Loafs:</strong></span>
-                        <span class="fw-bold text-warning" id="total-users">0 Accounts</span>
-                    </div>
-                    <div class="p-2 bg-black bg-opacity-40 text-center rounded border border-secondary">
-                        <small class="text-light d-block mb-1">Your Protocol Endpoint Address:</small>
-                        <code class="text-warning fw-bold" style="font-size: 1.1rem;">127.0.0.1:5190</code>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+    
+    <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••">
     </div>
+    
+    <button class="aero-btn">Log In</button>
 </div>
 
-<script src="script.js"></script>
+<div class="aero-taskbar">
+    <div class="start-orb"></div>
+    <div>Loaf Website Server Status: Online</div>
+</div>
+
 </body>
 </html>
