@@ -1,104 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Loaf: the ICQ and AIM time machine</title>
-    <style>
-        /* CSS: Aero Glass & Bread Background */
-        * { box-sizing: border-box; }
-        body { 
-            margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center;
-            background-color: #f7f3eb;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='28'%3E🍞%3C/text%3E%3C/svg%3E");
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-        }
+<body style="margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background-color: #f7f3eb; background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2270%22 height=%2270%22 viewBox=%220 0 70 70%22%3E%3Ctext x=%2220%22 y=%2245%22 font-size=%2228%22%3E🍞%3C/text%3E%3C/svg%3E'); font-family: sans-serif;">
 
-        .window-container {
-            width: 900px; height: 550px;
-            background: rgba(10, 95, 115, 0.45);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 8px 8px 0 0;
-            display: flex; flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            overflow: hidden;
-        }
-
-        .title-bar { 
-            background: rgba(255,255,255,0.1); padding: 5px 10px; color: white;
-            display: flex; justify-content: space-between; font-size: 0.9rem;
-        }
-
-        .window-body { flex-grow: 1; background: #eef3f7; display: flex; }
-        .sidebar { width: 200px; padding: 15px; border-right: 1px solid #ccc; }
-        .main-content { padding: 20px; flex-grow: 1; }
+    <div id="window" style="width: 900px; height: 550px; background: rgba(10, 95, 115, 0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px 8px 0 0; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
         
-        .d-none { display: none !important; }
-        input { display: block; margin: 10px 0; padding: 8px; width: 250px; }
-        button { padding: 8px 15px; cursor: pointer; }
-    </style>
-</head>
-<body>
-
-<div class="window-container">
-    <div class="title-bar">
-        <span>📁 Loaf: Revive AIM and ICQ!</span>
-        <span>— ⬜ X</span>
-    </div>
-
-    <div class="window-body">
-        <div class="sidebar">
-            <b>Connections</b>
-            <div style="font-size: 0.8rem; margin-top: 10px;">
-                🟡 AOL (OSCAR)<br>
-                🟢 ICQ Network
-            </div>
+        <div style="background: rgba(255,255,255,0.2); padding: 5px 10px; color: white; display: flex; justify-content: space-between;">
+            <span>📁 Loaf: Revive AIM and ICQ!</span>
+            <span>— ⬜ X</span>
         </div>
 
-        <div class="main-content">
-            <div id="auth-container">
-                <h3>Sign In</h3>
-                <form id="login-form">
-                    <input type="text" id="login-user" placeholder="Screen Name" required>
-                    <input type="password" id="login-pass" placeholder="Password" required>
-                    <button type="submit">Sign In</button>
-                </form>
+        <div style="flex-grow: 1; background: #eef3f7; display: flex;">
+            <div style="width: 200px; padding: 15px; border-right: 1px solid #ccc;">
+                <b>Connections</b>
+                <div style="font-size: 0.8rem; margin-top: 10px;">🟡 AOL (OSCAR)<br>🟢 ICQ Network</div>
             </div>
-            
-            <div id="dashboard-container" class="d-none">
-                <h3 id="display-username"></h3>
-                <input type="text" id="user-badge" placeholder="Badge title...">
-                <button id="btn-logout">Sign Out</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const loginForm = document.getElementById('login-form');
-        const authContainer = document.getElementById('auth-container');
-        const dashboardContainer = document.getElementById('dashboard-container');
-        const displayUsername = document.getElementById('display-username');
-        const btnLogout = document.getElementById('btn-logout');
-
-        if (loginForm) {
-            loginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const user = document.getElementById('login-user').value;
-                displayUsername.textContent = "Welcome, " + user;
+            <div style="padding: 20px; flex-grow: 1;">
+                <div id="auth-container">
+                    <h3>Sign In</h3>
+                    <form id="login-form">
+                        <input type="text" id="login-user" placeholder="Name" required style="display:block; margin: 10px 0; padding: 8px; width: 250px;">
+                        <input type="password" id="login-pass" placeholder="Password" required style="display:block; margin: 10px 0; padding: 8px; width: 250px;">
+                        <button type="submit" style="padding: 8px 15px;">Sign In</button>
+                    </form>
+                </div>
                 
-                authContainer.classList.add('d-none');
-                dashboardContainer.classList.remove('d-none');
-            });
-        }
+                <div id="dashboard-container" style="display: none;">
+                    <h3 id="display-username"></h3>
+                    <button id="btn-logout" style="padding: 8px 15px;">Sign Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        if (btnLogout) {
-            btnLogout.addEventListener('click', () => {
-                location.reload();
-            });
-        }
-    });
-</script>
+    <script>
+        const form = document.getElementById('login-form');
+        const auth = document.getElementById('auth-container');
+        const dash = document.getElementById('dashboard-container');
+        const userDisplay = document.getElementById('display-username');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            userDisplay.textContent = "Welcome, " + document.getElementById('login-user').value;
+            auth.style.display = 'none';
+            dash.style.display = 'block';
+        });
+
+        document.getElementById('btn-logout').addEventListener('click', () => {
+            location.reload();
+        });
+    </script>
 </body>
 </html>
