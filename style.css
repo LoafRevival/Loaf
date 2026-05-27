@@ -1,226 +1,47 @@
-* {
-    box-sizing: border-box;
-}
-
+* { box-sizing: border-box; }
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    /* Clean bread background grid - 100% sharp vector layout */
+    margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center;
     background-color: #f7f3eb;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='28'%3E%F0%9F%8D%9E%3C/text%3E%3C/svg%3E");
-    background-repeat: repeat;
-    
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='28'%3E🍞%3C/text%3E%3C/svg%3E");
+    font-family: 'Segoe UI', Tahoma, sans-serif; overflow: hidden;
 }
 
-/* --- TEAL AERO WINDOW FRAME --- */
 .window-container {
-    width: 950px; 
-    height: 600px;
-    background: rgba(10, 95, 115, 0.45); /* True Windows 7 Aero Teal Glass */
+    width: 950px; height: 600px;
+    background: rgba(10, 95, 115, 0.45);
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 8px 8px 0 0;
-    
-    /* Frosted glass effect blurs the background loaves passing underneath */
     backdrop-filter: blur(12px) saturate(140%);
-    -webkit-backdrop-filter: blur(12px) saturate(140%);
-    
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35), 
-                inset 0 1px 1px rgba(255, 255, 255, 0.5);
-    padding: 5px; 
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.5);
+    padding: 5px; display: flex; flex-direction: column;
 }
 
-/* --- WINDOW TITLE BAR --- */
-.title-bar {
-    height: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    color: #ffffff;
-    font-size: 0.85rem;
-    text-shadow: 0 0 6px rgba(255, 255, 255, 0.6), 1px 1px 2px rgba(0,0,0,0.6);
+.auth-panel {
+    background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(220,230,240,0.6) 100%);
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 8px; padding: 20px; width: 380px;
+    backdrop-filter: blur(8px);
 }
 
-/* Labeled Window Controls Customization */
-.window-controls {
-    display: flex;
-    gap: 5px;
-    align-items: center;
+.profile-card {
+    display: flex; align-items: center; gap: 15px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 15px; border-radius: 6px;
 }
 
-.win-btn {
-    width: 26px;
-    height: 18px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.15));
-    border: 1px solid rgba(0, 0, 0, 0.4);
-    border-radius: 3px;
-    cursor: pointer;
-    color: rgba(0, 0, 0, 0.7);
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-size: 10px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+.pfp-placeholder {
+    width: 60px; height: 60px; background: #ffffff;
+    border: 2px solid #aebac7; display: flex; justify-content: center; align-items: center;
+    font-size: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
-.win-btn:hover {
-    background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+.aero-action-btn {
+    width: 100%; padding: 8px; border: 1px solid #3c7fb1; border-radius: 3px;
+    background: linear-gradient(to bottom, #cedff2 0%, #a9c7e8 50%, #7da2cc 51%, #a3c5ec 100%);
+    font-weight: bold; cursor: pointer;
 }
 
-.win-btn.close {
-    background: linear-gradient(to bottom, #f37a7a, #d93939);
-    border-color: #7a1a1a;
-    width: 45px;
-    color: #ffffff;
-    font-size: 11px;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
-}
-
-.win-btn.close:hover {
-    background: linear-gradient(to bottom, #ff9494, #ef4d4d);
-    box-shadow: 0 0 6px rgba(243, 122, 122, 0.8);
-}
-
-/* --- BROWSER NAVIGATION BAR --- */
-.nav-bar {
-    height: 38px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-    padding: 0 8px;
-    gap: 10px;
-}
-
-.nav-circles {
-    display: flex;
-    gap: 5px;
-}
-
-.circle {
-    width: 22px;
-    height: 22px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
-    border: 1px solid rgba(0,0,0,0.25);
-    border-radius: 50%;
-}
-
-.address-box {
-    flex-grow: 1;
-    height: 24px;
-    background: white;
-    border: 1px solid #9bb1c4;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    padding: 0 8px;
-    font-size: 0.8rem;
-    color: #444;
-}
-
-/* --- SPLIT LAYOUT INNER FRAMEWORK --- */
-.window-body {
-    flex-grow: 1;
-    background: #ffffff;
-    border: 1px solid #6f8295;
-    border-radius: 2px;
-    display: flex;
-    overflow: hidden;
-}
-
-/* --- LEFT SIDEBAR: AOL / ICQ RETRO MESSENGER --- */
-.messenger-sidebar {
-    width: 220px;
-    background: #f0f4f9;
-    border-right: 1px solid #d2dbe5;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-}
-
-.messenger-header {
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #1e395b;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #a0b2c6;
-    margin-bottom: 8px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.protocol-group {
-    margin-bottom: 15px;
-}
-
-.group-title {
-    font-size: 0.75rem;
-    font-weight: bold;
-    color: #555;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.buddy-item {
-    font-size: 0.85rem;
-    padding: 3px 6px;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-    color: #333;
-}
-
-.buddy-item:hover {
-    background-color: #dce6f2;
-}
-
-/* Retro Node Status Indicators */
-.status-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-}
-.status-online { background-color: #5cb85c; }
-.status-away { background-color: #f0ad4e; }
-
-.icq-flower {
-    font-size: 0.75rem;
-}
-
-/* --- RIGHT SIDEBAR: ORIGINAL LOAF WEBSITE MAIN CONTENT --- */
-.main-content {
-    flex-grow: 1;
-    padding: 25px;
-    font-family: 'Courier New', Courier, monospace;
-    color: #000000;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    overflow-y: auto;
-}
-
-.loaf-text {
-    font-size: 1.4rem;
-    font-weight: bold;
-    text-align: left;
-}
+.messenger-sidebar { width: 220px; background: #f0f4f9; padding: 10px; border-right: 1px solid #d2dbe5; }
+.buddy-item { font-size: 0.85rem; padding: 4px; cursor: pointer; }
+.status-dot { width: 9px; height: 9px; display: inline-block; border-radius: 50%; background: #5cb85c; }
