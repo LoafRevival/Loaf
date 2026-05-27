@@ -55,14 +55,13 @@ registerForm.addEventListener('submit', (e) => {
     }
 
     const accounts = JSON.parse(localStorage.getItem('retro_accounts')) || {};
-
     if (accounts[username]) {
         errorMsg.textContent = "Error: Screen name is already taken!";
         errorMsg.classList.remove('d-none');
     } else {
         accounts[username] = password;
         localStorage.setItem('retro_accounts', JSON.stringify(accounts));
-        successMsg.textContent = "Account baked successfully! You can now Sign On.";
+        successMsg.textContent = "Account baked successfully!";
         successMsg.classList.remove('d-none');
         registerForm.reset();
         updateNetworkStats();
@@ -71,12 +70,8 @@ registerForm.addEventListener('submit', (e) => {
 
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    errorMsg.classList.add('d-none');
-    successMsg.classList.add('d-none');
-
     const username = document.getElementById('login-user').value.trim().toLowerCase();
     const password = document.getElementById('login-pass').value;
-
     const accounts = JSON.parse(localStorage.getItem('retro_accounts')) || {};
 
     if (accounts[username] && accounts[username] === password) {
@@ -85,21 +80,17 @@ loginForm.addEventListener('submit', (e) => {
         dashboardContainer.classList.remove('d-none');
         loadUserProfile(username);
     } else {
-        errorMsg.textContent = "Access Denied: Invalid Screen Name or Password.";
+        errorMsg.textContent = "Access Denied.";
         errorMsg.classList.remove('d-none');
     }
 });
 
-if (saveProfileBtn) {
-    saveProfileBtn.addEventListener('click', () => {
-        const currentUser = displayUsername.textContent;
-        if (currentUser) {
-            localStorage.setItem(`${currentUser}_badge`, profileBadge.value);
-            localStorage.setItem(`${currentUser}_status`, customStatusInput.value);
-            alert("Profile metadata updated inside the database vault!");
-        }
-    });
-}
+saveProfileBtn.addEventListener('click', () => {
+    const currentUser = displayUsername.textContent;
+    localStorage.setItem(`${currentUser}_badge`, profileBadge.value);
+    localStorage.setItem(`${currentUser}_status`, customStatusInput.value);
+    alert("Profile metadata updated!");
+});
 
 btnLogout.addEventListener('click', () => {
     authContainer.classList.remove('d-none');
