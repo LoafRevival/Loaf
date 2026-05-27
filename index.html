@@ -2,66 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loaf Retro Portal - Aero Edition</title>
+    <title>LoafXD: Revive ICQ and AIM!</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="window-container">
     <div class="title-bar">
-        <div class="window-title">📁 Loaf Retro Messenger Hub</div>
+        <div class="window-title">📁 LoafXD</div>
         <div class="window-controls">
-            <button class="win-btn" title="Minimize">—</button>
-            <button class="win-btn" title="Maximize">⬜</button>
-            <button class="win-btn close" title="Close">X</button>
+            <button class="win-btn">—</button><button class="win-btn">⬜</button><button class="win-btn close">X</button>
         </div>
-    </div>
-
-    <div class="nav-bar">
-        <div class="nav-circles"><div class="circle"></div><div class="circle"></div></div>
-        <div class="address-box">💻 LoafWebsite &gt; Protocols &gt; OSCAR_Server</div>
     </div>
 
     <div class="window-body">
-        
         <div class="messenger-sidebar">
             <div class="messenger-header">Connections</div>
-            <div class="protocol-group">
-                <div class="group-title">🟡 AOL (OSCAR)</div>
-                <div class="buddy-item"><span class="status-dot status-online"></span> AimMaster99</div>
-            </div>
-            <div class="protocol-group">
-                <div class="group-title">🟢 ICQ Network</div>
-                <div class="buddy-item"><span>🌸</span> UIN: 1234567</div>
-            </div>
+            <div id="total-users" style="font-size: 0.7rem; padding: 5px;">0 Accounts Configured</div>
         </div>
 
         <div class="main-content">
-            <div id="login-panel" class="auth-panel">
-                <div class="panel-title">Sign In</div>
-                <div class="input-group">
-                    <label>Screen Name / UIN</label>
-                    <input type="text" id="usernameInput" placeholder="Enter handle...">
-                </div>
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="••••••••">
-                </div>
-                <button class="aero-action-btn" onclick="login()">Sign In</button>
-                <div class="auth-switch">New user? <span onclick="switchForm()">Create account</span></div>
+            <div id="auth-container">
+                <form id="login-form">
+                    <div class="panel-title">Sign In</div>
+                    <input type="text" id="login-user" placeholder="Screen Name">
+                    <input type="password" id="login-pass" placeholder="Password">
+                    <button type="submit" class="aero-action-btn">Sign In</button>
+                </form>
+
+                <form id="register-form" class="d-none">
+                    <div class="panel-title">Create Account</div>
+                    <input type="text" id="reg-user" placeholder="Desired handle">
+                    <input type="password" id="reg-pass" placeholder="Password">
+                    <button type="submit" class="aero-action-btn">Register</button>
+                </form>
+                
+                <div id="error-msg" class="d-none" style="color:red; font-size: 0.8rem;"></div>
+                <div id="success-msg" class="d-none" style="color:green; font-size: 0.8rem;"></div>
+                <a href="#" id="auth-toggle" style="font-size: 0.8rem;">Create an Account ✨</a>
             </div>
 
-            <div id="profile-panel" class="auth-panel" style="display: none;">
-                <div class="panel-title">User Account</div>
-                <div class="profile-card">
-                    <div class="pfp-placeholder">👤</div>
-                    <div class="user-info">
-                        <div id="display-name" style="font-weight:bold;">User</div>
-                        <div style="font-size: 0.8rem;">Administrator</div>
-                    </div>
-                </div>
-                <button class="aero-action-btn" style="margin-top:20px;" onclick="location.reload()">Sign Out</button>
+            <div id="dashboard-container" class="d-none">
+                <div class="panel-title">User Account: <span id="display-username"></span></div>
+                <input type="text" id="user-badge" placeholder="Badge title...">
+                <input type="text" id="custom-status" placeholder="Status message...">
+                <button id="save-profile" class="aero-action-btn">Save Profile Metadata</button>
+                <button id="btn-logout" class="aero-action-btn">Sign Out</button>
             </div>
         </div>
     </div>
