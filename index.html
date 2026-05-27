@@ -12,27 +12,28 @@
     <div class="title-bar">
         <div class="window-title">📁 Loaf Retro Messenger Hub</div>
         <div class="window-controls">
-            <button class="win-btn">—</button>
-            <button class="win-btn">⬜</button>
-            <button class="win-btn close">X</button>
+            <button class="win-btn" title="Minimize">—</button>
+            <button class="win-btn" title="Maximize">⬜</button>
+            <button class="win-btn close" title="Close">X</button>
         </div>
     </div>
 
     <div class="nav-bar">
         <div class="nav-circles"><div class="circle"></div><div class="circle"></div></div>
-        <div class="address-box">💻 Main-PC &gt; Loaf Source code &gt; index.html</div>
+        <div class="address-box">💻 LoafWebsite &gt; Protocols &gt; OSCAR_Server</div>
     </div>
 
     <div class="window-body">
+        
         <div class="messenger-sidebar">
-            <div class="messenger-header"><span>Connections</span></div>
+            <div class="messenger-header">Connections</div>
             <div class="protocol-group">
                 <div class="group-title">🟡 AOL (OSCAR)</div>
                 <div class="buddy-item"><span class="status-dot status-online"></span> AimMaster99</div>
             </div>
             <div class="protocol-group">
                 <div class="group-title">🟢 ICQ Network</div>
-                <div class="buddy-item"><span>🌸</span> UIN: 312111</div>
+                <div class="buddy-item"><span>🌸</span> UIN: 1234567</div>
             </div>
         </div>
 
@@ -48,7 +49,7 @@
                     <input type="password" placeholder="••••••••">
                 </div>
                 <button class="aero-action-btn" onclick="login()">Sign In</button>
-                <div class="auth-switch">New user? <span onclick="switchForm('register')">Create account</span></div>
+                <div class="auth-switch">New user? <span onclick="switchForm()">Create account</span></div>
             </div>
 
             <div id="profile-panel" class="auth-panel" style="display: none;">
@@ -66,16 +67,6 @@
     </div>
 </div>
 
-<script>
-    function login() {
-        const name = document.getElementById('usernameInput').value;
-        if(name) {
-            document.getElementById('login-panel').style.display = 'none';
-            document.getElementById('profile-panel').style.display = 'block';
-            document.getElementById('display-name').innerText = name;
-        } else { alert("Please enter a Screen Name or UIN"); }
-    }
-    function switchForm(p) { /* Logic placeholder */ alert("Registration feature ready."); }
-</script>
+<script src="script.js"></script>
 </body>
 </html>
