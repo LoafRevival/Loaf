@@ -5,22 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loaf: ICQ and AOL revival!</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: url('https://wallpaperaccess.com/full/2161749.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+        }
+        .aero-window {
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(15px) saturate(160%);
+            -webkit-backdrop-filter: blur(15px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+        .aero-header {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            font-weight: bold;
+            padding: 12px 20px;
+            border-top-left-radius: 11px;
+            border-top-right-radius: 11px;
+        }
+        .aero-input {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: white !important;
+        }
+        .aero-input:focus {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border-color: #38bdf8 !important;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5) !important;
+        }
+        .aero-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .loaf-brand {
+            font-weight: 800;
+            color: #ffb74d;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        }
+    </style>
 </head>
 <body>
 
 <div class="container py-5">
     
     <div class="text-center mb-5">
-        <h1 class="display-4 loaf-brand"> Loaf</h1>
-        <p class="text-white lead">The Ultimate Custom Retro Chat Network Portal</p>
+        <h1 class="display-4 loaf-brand">Loaf</h1>
+        <p class="lead text-white" style="text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Connect to loaf.oscar.open.server</p>
     </div>
 
     <div class="row justify-content-center">
         <div class="col-md-6">
             
             <div class="aero-window mb-4" id="auth-container">
-                <div class="aero-header">
+                <div class="aero-header d-flex align-items-center">
                     <img src="https://img.icons8.com/color/24/msn.png" class="me-2" alt="icon"> 
                     Loaf Network Sign-On
                 </div>
@@ -49,43 +90,57 @@
                             <label class="form-label">Create Password</label>
                             <input type="password" id="reg-pass" class="form-control aero-input">
                         </div>
-                        <button type="submit" class="btn btn-success w-100 fw-bold">Create Account </button>
+                        <button type="submit" class="btn btn-success w-100 fw-bold">Register Account</button>
                     </form>
 
-                    <hr class="bg-white">
+                    <hr class="bg-white opacity-25">
                     <div class="text-center">
-                        <a href="#" id="auth-toggle" class="text-info fw-bold">Create an Account ✨</a>
+                        <a href="#" id="auth-toggle" class="text-info fw-bold text-decoration-none">Create an Account</a>
                     </div>
                 </div>
             </div>
 
             <div class="aero-window mb-4 d-none" id="dashboard-container">
-                <div class="aero-header">
+                <div class="aero-header d-flex align-items-center">
                     <img src="https://img.icons8.com/color/24/checked-user-male.png" class="me-2" alt="user-icon">
                     Welcome, <span id="display-username" class="ms-1 text-warning"></span>!
                 </div>
                 <div class="card-body p-4">
+                    <h4 class="mb-3 border-bottom border-secondary pb-2">Network Controls</h4>
+                    <div class="d-flex gap-2 mb-4">
+                        <button id="toggle-node" class="btn btn-outline-light btn-sm">Toggle Node State</button>
+                        <button id="flush-buffer" class="btn btn-outline-light btn-sm">Flush Log Buffer</button>
+                    </div>
+
+                    <h4 class="mb-3 border-bottom border-secondary pb-2">BOS Status</h4>
+                    <div class="p-3 bg-black bg-opacity-40 rounded border border-secondary mb-4" style="font-family: monospace;">
+                        <p class="mb-1 text-light">Host: <span class="text-info">login.loaf.server.chat</span></p>
+                        <p class="mb-1 text-light">Port: <span class="text-info">5190</span></p>
+                        <p class="mb-1 text-primary">[SYS] Monitoring active retro clients...</p>
+                        <p class="mb-0 text-success">[OK] Core linked to login.loaf.server.chat ✨</p>
+                    </div>
+
                     <div class="mb-3">
                         <label class="form-label">Network Status Badge</label>
                         <select id="user-badge" class="form-select aero-input">
-                            <option value="Classic User ">Classic User </option>
-                            <option value="Loaf Dev ">Loaf Dev </option>
-                            <option value="Retro Beta Tester ">Retro Beta Tester <option>
+                            <option value="Classic User 💾">Classic User 💾</option>
+                            <option value="Loaf Dev 🍞">Loaf Dev 🍞</option>
+                            <option value="Retro Beta Tester ">Retro Beta Tester </option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Custom Status Message</label>
                         <input type="text" id="custom-status" class="form-control aero-input" placeholder="Away from keyboard">
                     </div>
-                    <button id="save-profile" class="btn btn-info w-100 fw-bold mb-2 text-white">Save Profile Data</button>
-                    <button id="btn-logout" class="btn btn-danger w-100 fw-bold">Sign Off</button>
+                    <button id="save-profile" class="btn btn-info w-100 fw-bold mb-3 text-white">Save Profile Data</button>
+                    <button id="btn-logout" class="btn btn-danger w-100 fw-bold">Log Out</button>
                 </div>
             </div>
 
             <div class="aero-window">
-                <div class="aero-header">
+                <div class="aero-header d-flex align-items-center">
                     <img src="https://img.icons8.com/color/24/servers-group.png" class="me-2" alt="server-icon"> 
-                    Escargot Tracker Status
+                    
                 </div>
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -100,7 +155,7 @@
                         <span><strong>Registered Loafs:</strong></span>
                         <span class="fw-bold text-warning" id="total-users">0 Accounts</span>
                     </div>
-                    <div class="p-2 bg-dark bg-opacity-50 text-center rounded border border-secondary">
+                    <div class="p-2 bg-black bg-opacity-40 text-center rounded border border-secondary">
                         <small class="text-light d-block mb-1">Your Protocol Endpoint Address:</small>
                         <code class="text-warning fw-bold" style="font-size: 1.1rem;">127.0.0.1:5190</code>
                     </div>
