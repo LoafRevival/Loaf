@@ -3,164 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoafWebsite - Aero Edition</title>
+    <title>Loaf Network Portal</title>
     <style>
         * {
             box-sizing: border-box;
         }
 
         body {
-            /* Warm background with an infinite grid of sharp bread emojis */
-            background-color: #f7f3eb;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='30'%3E🍞%3C/text%3E%3C/svg%3E");
-            background-repeat: repeat;
-            
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Windows 7 default font */
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            
+            /* Sharp, non-AI style bread background using system emojis */
+            background-color: #f7f3eb;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='28'%3E🍞%3C/text%3E%3C/svg%3E");
+            background-repeat: repeat;
+            
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
         }
 
-        /* --- THE LOG IN AERO WINDOW --- */
-        .aero-window {
-            width: 360px;
-            background: rgba(255, 255, 255, 0.25); /* Translucent glass body */
-            border: 1px solid rgba(255, 255, 255, 0.45);
-            border-top: 1px solid rgba(255, 255, 255, 0.65);
-            border-radius: 8px;
+        /* --- THE MAIN AERO WINDOW CONTAINER --- */
+        .window-container {
+            width: 800px;
+            height: 550px;
+            background: rgba(10, 95, 115, 0.45); /* Classic Vista/7 Teal tint */
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px 8px 0 0;
             
-            /* The magic trick: blurs the loaves behind the box! */
-            backdrop-filter: blur(12px) saturate(120%);
-            -webkit-backdrop-filter: blur(12px) saturate(120%);
+            /* Frosted glass blur effect over the loaves */
+            backdrop-filter: blur(12px) saturate(140%);
+            -webkit-backdrop-filter: blur(12px) saturate(140%);
             
-            /* Aero glass drop shadow and inner reflection */
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
-            padding: 20px;
-            text-align: center;
-            z-index: 2;
+            /* Window reflection and deep desktop shadow */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35), 
+                        inset 0 1px 1px rgba(255, 255, 255, 0.5);
+            padding: 5px; /* Border padding for the glass frame */
+            display: flex;
+            flex-direction: column;
         }
 
-        .aero-title {
-            color: #1e395b;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.8); /* Windows 7 text glow */
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .input-group label {
-            display: block;
+        /* --- WINDOW TITLE BAR --- */
+        .title-bar {
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            color: #ffffff;
             font-size: 0.85rem;
-            color: #222;
-            margin-bottom: 5px;
-            font-weight: bold;
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.6), 1px 1px 2px rgba(0,0,0,0.6);
         }
 
-        .input-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #a0a0a0;
-            border-radius: 4px;
-            background: rgba(255, 255, 255, 0.85);
-            font-family: inherit;
+        /* Minimize, Maximize, Close Buttons */
+        .window-controls {
+            display: flex;
+            gap: 4px;
         }
 
-        .input-group input:focus {
-            outline: none;
-            border-color: #3d94ff;
-            box-shadow: 0 0 5px rgba(61, 148, 255, 0.6);
-        }
-
-        /* Shiny Aero-style blue button */
-        .aero-btn {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #3c7fb1;
-            border-radius: 4px;
-            background: linear-gradient(to bottom, #cedff2 0%, #a9c7e8 50%, #7da2cc 51%, #a3c5ec 100%);
-            color: #0c2238;
-            font-weight: bold;
+        .win-btn {
+            width: 26px;
+            height: 18px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+            border: 1px solid rgba(0,0,0,0.3);
+            border-radius: 3px;
             cursor: pointer;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.15);
         }
 
-        .aero-btn:hover {
-            background: linear-gradient(to bottom, #e3effc 0%, #bcd6f2 50%, #9bc1ea 51%, #bce0fd 100%);
+        .win-btn.close {
+            background: linear-gradient(to bottom, #f37a7a, #d93939);
+            border-color: #7a1a1a;
+            width: 45px;
+        }
+        
+        .win-btn.close:hover {
+            background: linear-gradient(to bottom, #ff9494, #ef4d4d);
         }
 
-        /* --- THE BOTTOM AERO TASKBAR --- */
-        .aero-taskbar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            
-            /* Same frosted glass overlay */
+        /* --- LEACY BROWSER NAVIGATION BAR --- */
+        .nav-bar {
+            height: 38px;
             background: rgba(255, 255, 255, 0.2);
-            border-top: 1px solid rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(15px) saturate(130%);
-            -webkit-backdrop-filter: blur(15px) saturate(130%);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-bottom: 5px;
             display: flex;
             align-items: center;
-            padding: 0 20px;
-            color: #1e395b;
-            font-size: 0.85rem;
-            font-weight: bold;
-            text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
-            z-index: 3;
+            padding: 0 8px;
+            gap: 10px;
         }
 
-        .start-orb {
-            width: 30px;
-            height: 30px;
-            background: radial-gradient(circle, #52a1ff 0%, #0054c2 70%, #002d69 100%);
+        /* Back/Forward circular buttons */
+        .nav-circles {
+            display: flex;
+            gap: 5px;
+        }
+
+        .circle {
+            width: 22px;
+            height: 22px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+            border: 1px solid rgba(0,0,0,0.25);
             border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.4);
-            box-shadow: 0 0 6px rgba(0,84,194,0.8);
-            margin-right: 15px;
-            cursor: pointer;
         }
 
-        .start-orb:hover {
-            filter: brightness(1.2);
+        /* Address Bar Box */
+        .address-box {
+            flex-grow: 1;
+            height: 24px;
+            background: white;
+            border: 1px solid #9bb1c4;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            font-size: 0.8rem;
+            color: #444;
+        }
+
+        /* --- THE CONTENT FILE VIEW (White Inner Window) --- */
+        .window-body {
+            flex-grow: 1;
+            background: #ffffff;
+            border: 1px solid #6f8295;
+            border-radius: 2px;
+            padding: 25px;
+            font-family: monospace; /* Kept your classic sketch text style */
+            color: #000000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+        }
+
+        .loaf-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .loaf-subtext {
+            font-size: 1.1rem;
+            color: #222;
+            margin-left: 20px;
         }
     </style>
 </head>
 <body>
 
-<div class="aero-window">
-    <div class="aero-title">Loaf System Login</div>
-    
-    <div class="input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Enter loaf user...">
+<div class="window-container">
+    <div class="title-bar">
+        <div class="window-title">📁 Network</div>
+        <div class="window-controls">
+            <button class="win-btn"></button>
+            <button class="win-btn"></button>
+            <button class="win-btn close"></button>
+        </div>
     </div>
-    
-    <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="••••••••">
-    </div>
-    
-    <button class="aero-btn">Log In</button>
-</div>
 
-<div class="aero-taskbar">
-    <div class="start-orb"></div>
-    <div>Loaf Website Server Status: Online</div>
+    <div class="nav-bar">
+        <div class="nav-circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="address-box">💻 Network &gt; LoafWebsite &gt; Server</div>
+    </div>
+
+    <div class="window-body">
+        <div class="loaf-text">loaf here</div>
+        <div class="loaf-subtext">background loafsssss</div>
+    </div>
 </div>
 
 </body>
