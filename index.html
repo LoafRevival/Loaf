@@ -1,30 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<body style="margin:0; height:100vh; background:#8da4ae; font-family:'Segoe UI', Tahoma, sans-serif; display:flex; justify-content:center; align-items:center;">
-
-    <div style="width:800px; height:500px; background:rgba(255,255,255,0.25); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.4); border-radius:8px 8px 0 0; box-shadow:0 10px 30px rgba(0,0,0,0.5); display:flex; flex-direction:column;">
+<head>
+    <meta charset="UTF-8">
+    <title>Loaf Retro Portal</title>
+    <style>
+        body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; 
+               background: #f7f3eb url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2270%22 height=%2270%22 viewBox=%220 0 70 70%22%3E%3Ctext x=%2220%22 y=%2245%22 font-size=%2228%22%3E🍞%3C/text%3E%3C/svg%3E'); }
         
-        <div style="padding:5px 10px; color:white; display:flex; justify-content:space-between; align-items:center;">
-            <span>📁 Loaf: Time machine for messengers.</span>
-            <div>
-                <button style="width:25px; height:20px; background:linear-gradient(#f0f0f0, #ccc); border:1px solid #777; cursor:pointer;">—</button>
-                <button style="width:25px; height:20px; background:linear-gradient(#f0f0f0, #ccc); border:1px solid #777; cursor:pointer;">⬜</button>
-                <button style="width:25px; height:20px; background:linear-gradient(#e81123, #b30000); border:1px solid #777; color:white; cursor:pointer;">X</button>
-            </div>
+        .win { width: 950px; height: 600px; background: rgba(10, 95, 115, 0.45); backdrop-filter: blur(12px); 
+               border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; }
+        
+        .header { background: rgba(255,255,255,0.2); padding: 5px 15px; color: white; display: flex; justify-content: space-between; }
+        .body { display: flex; flex-grow: 1; background: #eef3f7; }
+        
+        /* Sidebar for Status */
+        .sidebar { width: 220px; padding: 20px; border-right: 1px solid #ccc; }
+        .status-light { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+        
+        /* Main Content */
+        .content { padding: 40px; flex-grow: 1; }
+        .box { background: white; padding: 20px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px; }
+        input { display: block; width: 100%; margin: 10px 0; padding: 8px; }
+    </style>
+</head>
+<body>
+
+<div class="win">
+    <div class="header"><span>📁 Loaf System Control Panel</span></div>
+    
+    <div class="body">
+        <div class="sidebar">
+            <b>Server Status</b>
+            <div style="margin-top:15px;"><span class="status-light" style="background:#ffcc00;"></span>AOL OSCAR: Online</div>
+            <div style="margin-top:10px;"><span class="status-light" style="background:#00cc00;"></span>ICQ Network: Active</div>
+            <hr style="margin: 20px 0;">
+            <small>Version: 1.0.4-Retro</small>
         </div>
 
-        <div style="flex-grow:1; background:rgba(255,255,255,0.7); padding:20px;">
-            <div style="font-weight:bold; margin-bottom:15px;">Connections</div>
-            
-            <div style="margin-bottom:10px;">
-                <span style="display:inline-block; width:12px; height:12px; background:#ffcc00; border-radius:50%; border:1px solid #999; margin-right:5px;"></span>
-                AOL (OSCAR) - Online
-            </div>
-            <div>
-                <span style="display:inline-block; width:12px; height:12px; background:#00cc00; border-radius:50%; border:1px solid #999; margin-right:5px;"></span>
-                ICQ Network - Available
+        <div class="content">
+            <div id="auth-panel" class="box">
+                <div id="login-view">
+                    <h3>Sign In to Loaf</h3>
+                    <form id="login-form">
+                        <input type="text" id="user" placeholder="Screen Name" required>
+                        <input type="password" id="pass" placeholder="Password" required>
+                        <button type="submit">Sign In</button>
+                    </form>
+                    <p>New? <a href="#" onclick="toggleAuth()">Create an Account</a></p>
+                </div>
+
+                <div id="signup-view" style="display:none;">
+                    <h3>Create New Account</h3>
+                    <form id="signup-form">
+                        <input type="text" placeholder="Desired Handle" required>
+                        <input type="password" placeholder="New Password" required>
+                        <button type="submit">Register Account</button>
+                    </form>
+                    <p><a href="#" onclick="toggleAuth()">Back to Sign In</a></p>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+<script>
+    function toggleAuth() {
+        const login = document.getElementById('login-view');
+        const signup = document.getElementById('signup-view');
+        login.style.display = (login.style.display === 'none') ? 'block' : 'none';
+        signup.style.display = (signup.style.display === 'none') ? 'block' : 'none';
+    }
+
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert("Connecting to server...");
+    });
+</script>
 </body>
 </html>
