@@ -2,54 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Loaf Source Code Portal</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loaf: ICQ and AOL revival!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="auth-container" class="auth-container">
-        <div class="login-box">
-            <h2>Loaf Source Code</h2>
-            <p class="subtitle">Connect to loaf.oscar.open.server</p>
-            <div id="error-msg" class="error-banner d-none"></div>
-            <div id="success-msg" class="success-banner d-none"></div>
-            <form id="login-form">
-                <div class="input-group"><label>Screen Name</label><input type="text" id="login-user" required></div>
-                <div class="input-group"><label>Password</label><input type="password" id="login-pass" required></div>
-                <button type="submit" class="btn-primary">Sign On</button>
-            </form>
-            <form id="register-form" class="d-none">
-                <div class="input-group"><label>Choose Screen Name</label><input type="text" id="reg-user" required></div>
-                <div class="input-group"><label>Create Password</label><input type="password" id="reg-pass" required></div>
-                <button type="submit" class="btn-success">Register Account</button>
-            </form>
-            <div class="auth-footer"><span>New Baker? <a href="#" id="auth-toggle">Create an Account</a></span></div>
-        </div>
+
+<div class="container py-5">
+    
+    <div class="text-center mb-5">
+        <h1 class="display-4 loaf-brand"> Loaf</h1>
+        <p class="text-white lead">The Ultimate Custom Retro Chat Network Portal</p>
     </div>
 
-    <div id="dashboard-container" class="dashboard-container d-none">
-        <header class="dash-header">
-            <h1>Loaf </h1>
-            <div><span id="display-username"></span> <button id="btn-logout" class="btn-disconnect">Log Out</button></div>
-        </header>
-        <main class="dash-content">
-            <section>
-                <h2>Network Controls</h2>
-                <div class="action-grid">
-                    <button class="btn-action" onclick="alert('Cycled.')">Toggle Node State</button>
-                    <button class="btn-action" onclick="alert('Flushed.')">Flush Log Buffer</button>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            
+            <div class="aero-window mb-4" id="auth-container">
+                <div class="aero-header">
+                    <img src="https://img.icons8.com/color/24/msn.png" class="me-2" alt="icon"> 
+                    Loaf Network Sign-On
                 </div>
-            </section>
-            <section>
-                <h2>BOS Status</h2>
-                <div class="stat-item"><span>Host:</span> <strong>login.loaf.server.chat</strong></div>
-                <div class="stat-item"><span>Port:</span> <strong>5190</strong></div>
-                <div class="log-output">
-                    <p style="color:#60a5fa">[SYS]: Monitoring active retro clients...</p>
-                    <p style="color:#34d399">[OK]: Core linked to login.loaf.server.chat ✨</p>
+                <div class="card-body p-4">
+                    <div id="error-msg" class="alert alert-danger d-none bg-danger text-white border-0"></div>
+                    <div id="success-msg" class="alert alert-success d-none bg-success text-white border-0"></div>
+
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label class="form-label">Screen Name</label>
+                            <input type="text" id="login-user" class="form-control aero-input" placeholder="example@loaf">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="login-pass" class="form-control aero-input">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">Sign On</button>
+                    </form>
+
+                    <form id="register-form" class="d-none">
+                        <div class="mb-3">
+                            <label class="form-label">Choose Screen Name</label>
+                            <input type="text" id="reg-user" class="form-control aero-input" placeholder="new_buddy">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Create Password</label>
+                            <input type="password" id="reg-pass" class="form-control aero-input">
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 fw-bold">Create Account </button>
+                    </form>
+
+                    <hr class="bg-white">
+                    <div class="text-center">
+                        <a href="#" id="auth-toggle" class="text-info fw-bold">Create an Account ✨</a>
+                    </div>
                 </div>
-            </section>
-        </main>
+            </div>
+
+            <div class="aero-window mb-4 d-none" id="dashboard-container">
+                <div class="aero-header">
+                    <img src="https://img.icons8.com/color/24/checked-user-male.png" class="me-2" alt="user-icon">
+                    Welcome, <span id="display-username" class="ms-1 text-warning"></span>!
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label">Network Status Badge</label>
+                        <select id="user-badge" class="form-select aero-input">
+                            <option value="Classic User ">Classic User </option>
+                            <option value="Loaf Dev ">Loaf Dev </option>
+                            <option value="Retro Beta Tester ">Retro Beta Tester <option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Custom Status Message</label>
+                        <input type="text" id="custom-status" class="form-control aero-input" placeholder="Away from keyboard">
+                    </div>
+                    <button id="save-profile" class="btn btn-info w-100 fw-bold mb-2 text-white">Save Profile Data</button>
+                    <button id="btn-logout" class="btn btn-danger w-100 fw-bold">Sign Off</button>
+                </div>
+            </div>
+
+            <div class="aero-window">
+                <div class="aero-header">
+                    <img src="https://img.icons8.com/color/24/servers-group.png" class="me-2" alt="server-icon"> 
+                    Escargot Tracker Status
+                </div>
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span><strong>Server Status:</strong></span>
+                        <span id="network-badge" class="badge bg-success px-3 py-2">ONLINE 24/7</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span><strong>Active Protocol:</strong></span>
+                        <span class="badge bg-info">OSCAR (AIM Client v5.x)</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span><strong>Registered Loafs:</strong></span>
+                        <span class="fw-bold text-warning" id="total-users">0 Accounts</span>
+                    </div>
+                    <div class="p-2 bg-dark bg-opacity-50 text-center rounded border border-secondary">
+                        <small class="text-light d-block mb-1">Your Protocol Endpoint Address:</small>
+                        <code class="text-warning fw-bold" style="font-size: 1.1rem;">127.0.0.1:5190</code>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-    <script src="./script.js"></script>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
