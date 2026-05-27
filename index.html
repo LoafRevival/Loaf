@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoafWebsite - Aero Edition</title>
+    <title>Loaf Retro Portal - AIM & ICQ Edition</title>
     <style>
         * {
             box-sizing: border-box;
@@ -17,7 +17,7 @@
             justify-content: center;
             align-items: center;
             
-            /* Crisp bread background grid */
+            /* Clean bread background grid - 100% sharp vector layout */
             background-color: #f7f3eb;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='28'%3E🍞%3C/text%3E%3C/svg%3E");
             background-repeat: repeat;
@@ -28,17 +28,16 @@
 
         /* --- TEAL AERO WINDOW FRAME --- */
         .window-container {
-            width: 800px;
-            height: 550px;
-            background: rgba(10, 95, 115, 0.45); /* Windows 7 Teal Glass Tint */
+            width: 950px; 
+            height: 600px;
+            background: rgba(10, 95, 115, 0.45); /* True Windows 7 Aero Teal Glass */
             border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 8px 8px 0 0;
             
-            /* Frosted glass effect blurs the loaves passing underneath! */
+            /* Frosted glass effect blurs the background loaves passing underneath */
             backdrop-filter: blur(12px) saturate(140%);
             -webkit-backdrop-filter: blur(12px) saturate(140%);
             
-            /* Aero style reflections and deep shadows */
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35), 
                         inset 0 1px 1px rgba(255, 255, 255, 0.5);
             padding: 5px; 
@@ -58,120 +57,30 @@
             text-shadow: 0 0 6px rgba(255, 255, 255, 0.6), 1px 1px 2px rgba(0,0,0,0.6);
         }
 
-        /* Window Buttons (Minimize, Maximize, Close) */
+        /* Labeled Window Controls Customization */
         .window-controls {
             display: flex;
-            gap: 4px;
+            gap: 5px;
+            align-items: center;
         }
 
         .win-btn {
             width: 26px;
             height: 18px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
-            border: 1px solid rgba(0,0,0,0.3);
+            background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.15));
+            border: 1px solid rgba(0, 0, 0, 0.4);
             border-radius: 3px;
             cursor: pointer;
-        }
-
-        .win-btn.close {
-            background: linear-gradient(to bottom, #f37a7a, #d93939);
-            border-color: #7a1a1a;
-            width: 45px;
-        }
-        
-        .win-btn.close:hover {
-            background: linear-gradient(to bottom, #ff9494, #ef4d4d);
-        }
-
-        /* --- BROWSER NAVIGATION BAR --- */
-        .nav-bar {
-            height: 38px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            padding: 0 8px;
-            gap: 10px;
-        }
-
-        .nav-circles {
-            display: flex;
-            gap: 5px;
-        }
-
-        .circle {
-            width: 22px;
-            height: 22px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
-            border: 1px solid rgba(0,0,0,0.25);
-            border-radius: 50%;
-        }
-
-        /* Address Bar */
-        .address-box {
-            flex-grow: 1;
-            height: 24px;
-            background: white;
-            border: 1px solid #9bb1c4;
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            padding: 0 8px;
-            font-size: 0.8rem;
-            color: #444;
-        }
-
-        /* --- THE MAIN WEBSITE CONTENT AREA --- */
-        .window-body {
-            flex-grow: 1;
-            background: #ffffff;
-            border: 1px solid #6f8295;
-            border-radius: 2px;
-            padding: 25px;
-            
-            /* Your custom layout settings */
-            font-family: 'Courier New', Courier, monospace; 
-            color: #000000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            overflow-y: auto;
-        }
-
-        .loaf-text {
-            font-size: 1.4rem;
+            color: rgba(0, 0, 0, 0.7);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 10px;
             font-weight: bold;
-            text-align: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
         }
-    </style>
-</head>
-<body>
 
-<div class="window-container">
-    <div class="title-bar">
-        <div class="window-title">📁 Loaf Website Portal</div>
-        <div class="window-controls">
-            <button class="win-btn"></button>
-            <button class="win-btn"></button>
-            <button class="win-btn close"></button>
-        </div>
-    </div>
-
-    <div class="nav-bar">
-        <div class="nav-circles">
-            <div class="circle"></div>
-            <div class="circle"></div>
-        </div>
-        <div class="address-box">💻 LoafWebsite &gt; Main &gt; Index</div>
-    </div>
-
-    <div class="window-body">
-        <div class="loaf-text">loaf here</div>
-        <div class="loaf-text">background loafsssss</div>
-    </div>
-</div>
-
-</body>
-</html>
+        .win-btn:hover {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,2
