@@ -12,7 +12,7 @@ body {
     
     /* Clean bread background grid - 100% sharp vector layout */
     background-color: #f7f3eb;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='28'%3E🍞%3C/text%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='28'%3E%F0%9F%8D%9E%3C/text%3E%3C/svg%3E");
     background-repeat: repeat;
     
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -86,4 +86,141 @@ body {
     width: 45px;
     color: #ffffff;
     font-size: 11px;
-    text-shadow
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+
+.win-btn.close:hover {
+    background: linear-gradient(to bottom, #ff9494, #ef4d4d);
+    box-shadow: 0 0 6px rgba(243, 122, 122, 0.8);
+}
+
+/* --- BROWSER NAVIGATION BAR --- */
+.nav-bar {
+    height: 38px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    gap: 10px;
+}
+
+.nav-circles {
+    display: flex;
+    gap: 5px;
+}
+
+.circle {
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+    border: 1px solid rgba(0,0,0,0.25);
+    border-radius: 50%;
+}
+
+.address-box {
+    flex-grow: 1;
+    height: 24px;
+    background: white;
+    border: 1px solid #9bb1c4;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    font-size: 0.8rem;
+    color: #444;
+}
+
+/* --- SPLIT LAYOUT INNER FRAMEWORK --- */
+.window-body {
+    flex-grow: 1;
+    background: #ffffff;
+    border: 1px solid #6f8295;
+    border-radius: 2px;
+    display: flex;
+    overflow: hidden;
+}
+
+/* --- LEFT SIDEBAR: AOL / ICQ RETRO MESSENGER --- */
+.messenger-sidebar {
+    width: 220px;
+    background: #f0f4f9;
+    border-right: 1px solid #d2dbe5;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.messenger-header {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #1e395b;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #a0b2c6;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.protocol-group {
+    margin-bottom: 15px;
+}
+
+.group-title {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.buddy-item {
+    font-size: 0.85rem;
+    padding: 3px 6px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    color: #333;
+}
+
+.buddy-item:hover {
+    background-color: #dce6f2;
+}
+
+/* Retro Node Status Indicators */
+.status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+.status-online { background-color: #5cb85c; }
+.status-away { background-color: #f0ad4e; }
+
+.icq-flower {
+    font-size: 0.75rem;
+}
+
+/* --- RIGHT SIDEBAR: ORIGINAL LOAF WEBSITE MAIN CONTENT --- */
+.main-content {
+    flex-grow: 1;
+    padding: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+}
+
+.loaf-text {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: left;
+}
