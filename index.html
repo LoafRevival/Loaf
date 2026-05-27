@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loaf Network Portal</title>
+    <title>LoafWebsite - Aero Edition</title>
     <style>
         * {
             box-sizing: border-box;
@@ -17,7 +17,7 @@
             justify-content: center;
             align-items: center;
             
-            /* Sharp, non-AI style bread background using system emojis */
+            /* Crisp bread background grid */
             background-color: #f7f3eb;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='28'%3E🍞%3C/text%3E%3C/svg%3E");
             background-repeat: repeat;
@@ -26,22 +26,22 @@
             overflow: hidden;
         }
 
-        /* --- THE MAIN AERO WINDOW CONTAINER --- */
+        /* --- TEAL AERO WINDOW FRAME --- */
         .window-container {
             width: 800px;
             height: 550px;
-            background: rgba(10, 95, 115, 0.45); /* Classic Vista/7 Teal tint */
+            background: rgba(10, 95, 115, 0.45); /* Windows 7 Teal Glass Tint */
             border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 8px 8px 0 0;
             
-            /* Frosted glass blur effect over the loaves */
+            /* Frosted glass effect blurs the loaves passing underneath! */
             backdrop-filter: blur(12px) saturate(140%);
             -webkit-backdrop-filter: blur(12px) saturate(140%);
             
-            /* Window reflection and deep desktop shadow */
+            /* Aero style reflections and deep shadows */
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35), 
                         inset 0 1px 1px rgba(255, 255, 255, 0.5);
-            padding: 5px; /* Border padding for the glass frame */
+            padding: 5px; 
             display: flex;
             flex-direction: column;
         }
@@ -58,7 +58,7 @@
             text-shadow: 0 0 6px rgba(255, 255, 255, 0.6), 1px 1px 2px rgba(0,0,0,0.6);
         }
 
-        /* Minimize, Maximize, Close Buttons */
+        /* Window Buttons (Minimize, Maximize, Close) */
         .window-controls {
             display: flex;
             gap: 4px;
@@ -83,7 +83,7 @@
             background: linear-gradient(to bottom, #ff9494, #ef4d4d);
         }
 
-        /* --- LEACY BROWSER NAVIGATION BAR --- */
+        /* --- BROWSER NAVIGATION BAR --- */
         .nav-bar {
             height: 38px;
             background: rgba(255, 255, 255, 0.2);
@@ -96,7 +96,6 @@
             gap: 10px;
         }
 
-        /* Back/Forward circular buttons */
         .nav-circles {
             display: flex;
             gap: 5px;
@@ -110,7 +109,7 @@
             border-radius: 50%;
         }
 
-        /* Address Bar Box */
+        /* Address Bar */
         .address-box {
             flex-grow: 1;
             height: 24px;
@@ -124,30 +123,27 @@
             color: #444;
         }
 
-        /* --- THE CONTENT FILE VIEW (White Inner Window) --- */
+        /* --- THE MAIN WEBSITE CONTENT AREA --- */
         .window-body {
             flex-grow: 1;
             background: #ffffff;
             border: 1px solid #6f8295;
             border-radius: 2px;
             padding: 25px;
-            font-family: monospace; /* Kept your classic sketch text style */
+            
+            /* Your custom layout settings */
+            font-family: 'Courier New', Courier, monospace; 
             color: #000000;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 10px;
             overflow-y: auto;
         }
 
         .loaf-text {
             font-size: 1.4rem;
             font-weight: bold;
-        }
-
-        .loaf-subtext {
-            font-size: 1.1rem;
-            color: #222;
-            margin-left: 20px;
+            text-align: left;
         }
     </style>
 </head>
@@ -155,7 +151,7 @@
 
 <div class="window-container">
     <div class="title-bar">
-        <div class="window-title">📁 Network</div>
+        <div class="window-title">📁 Loaf Website Portal</div>
         <div class="window-controls">
             <button class="win-btn"></button>
             <button class="win-btn"></button>
@@ -168,12 +164,12 @@
             <div class="circle"></div>
             <div class="circle"></div>
         </div>
-        <div class="address-box">💻 Network &gt; LoafWebsite &gt; Server</div>
+        <div class="address-box">💻 LoafWebsite &gt; Main &gt; Index</div>
     </div>
 
     <div class="window-body">
         <div class="loaf-text">loaf here</div>
-        <div class="loaf-subtext">background loafsssss</div>
+        <div class="loaf-text">background loafsssss</div>
     </div>
 </div>
 
