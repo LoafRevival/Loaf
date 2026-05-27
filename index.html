@@ -3,32 +3,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Loaf Retro Portal</title>
+    <title>Loaf: The ICQ time machine</title>
     <style>
-        /* AERO STYLE CSS */
-        body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        /* --- 1. AERO GLASS & BREAD BACKGROUND --- */
+        * { box-sizing: border-box; }
+        body { 
+            margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center;
+            background-color: #f7f3eb;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ctext x='20' y='45' font-size='28'%3E🍞%3C/text%3E%3C/svg%3E");
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
 
         .window-container {
-            width: 800px; background: #f0f0f0; border: 1px solid #777;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3); border-radius: 5px;
+            width: 900px; height: 550px;
+            background: rgba(10, 95, 115, 0.45);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px 8px 0 0;
+            display: flex; flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
         }
 
-        .title-bar {
-            background: linear-gradient(#e1e1e1, #c1c1c1); padding: 5px 10px;
-            display: flex; justify-content: space-between; border-bottom: 1px solid #999;
+        .title-bar { 
+            background: rgba(255,255,255,0.1); padding: 5px 10px; color: white;
+            display: flex; justify-content: space-between; font-size: 0.9rem;
         }
 
-        .content-area { padding: 20px; }
-
-        /* Mimicking the User Account Panel structure */
-        .account-card {
-            border: 1px solid #ccc; background: #fff; padding: 15px;
-            display: flex; gap: 15px; align-items: center; margin-top: 10px;
-        }
-
-        .profile-img { width: 64px; height: 64px; background: #ddd; border: 1px solid #999; }
-
-        input { padding: 5px; border: 1px solid #999; margin: 5px 0; }
+        /* --- 2. LAYOUT & DASHBOARD --- */
+        .window-body { flex-grow: 1; background: #eef3f7; display: flex; }
+        .sidebar { width: 200px; padding: 15px; border-right: 1px solid #ccc; }
+        .main-content { padding: 20px; flex-grow: 1; }
         
         .d-none { display: none !important; }
     </style>
@@ -37,33 +42,34 @@
 
 <div class="window-container">
     <div class="title-bar">
-        <span>📁 Облікові записи користувачів</span>
+        <span>📁 Loaf: Revive AIM and ICQ!</span>
         <span>— ⬜ X</span>
     </div>
 
-    <div class="content-area">
-        <h2 id="view-title">Sign In to LoafXD</h2>
-        
-        <div id="auth-container">
-            <form id="login-form">
-                <input type="text" id="login-user" placeholder="Screen Name">
-                <input type="password" id="login-pass" placeholder="Password">
-                <button type="submit">Sign In</button>
-            </form>
+    <div class="window-body">
+        <div class="sidebar">
+            <b>Connections</b>
+            <div style="font-size: 0.8rem; margin-top: 10px;">
+                🟡 AOL (OSCAR)<br>
+                🟢 ICQ Network
+            </div>
         </div>
 
-        <div id="dashboard-container" class="d-none">
-            <div class="account-card">
-                <div class="profile-img"></div>
-                <div>
-                    <h3 id="display-username"></h3>
-                    <p>Administrator</p>
-                </div>
+        <div class="main-content">
+            <div id="auth-container">
+                <h3>Sign In</h3>
+                <form id="login-form">
+                    <input type="text" id="login-user" placeholder="Name">
+                    <input type="password" id="login-pass" placeholder="Password">
+                    <button type="submit">Sign In</button>
+                </form>
             </div>
-            <br>
-            <input type="text" id="user-badge" placeholder="Badge title...">
-            <button id="save-profile">Save Metadata</button>
-            <button id="btn-logout">Sign Out</button>
+            
+            <div id="dashboard-container" class="d-none">
+                <h3 id="display-username"></h3>
+                <input type="text" id="user-badge" placeholder="Badge title...">
+                <button id="btn-logout">Sign Out</button>
+            </div>
         </div>
     </div>
 </div>
