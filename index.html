@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loaf Retro Portal - AIM & ICQ Edition</title>
+    <title>Loaf Retro Portal - Aero Edition</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,60 +12,70 @@
     <div class="title-bar">
         <div class="window-title">📁 Loaf Retro Messenger Hub</div>
         <div class="window-controls">
-            <button class="win-btn" title="Minimize">—</button>
-            <button class="win-btn" title="Maximize">⬜</button>
-            <button class="win-btn close" title="Close">X</button>
+            <button class="win-btn">—</button>
+            <button class="win-btn">⬜</button>
+            <button class="win-btn close">X</button>
         </div>
     </div>
 
     <div class="nav-bar">
-        <div class="nav-circles">
-            <div class="circle"></div>
-            <div class="circle"></div>
-        </div>
-        <div class="address-box">💻 LoafWebsite &gt; Protocols &gt; OSCAR_Server</div>
+        <div class="nav-circles"><div class="circle"></div><div class="circle"></div></div>
+        <div class="address-box">💻 Main-PC &gt; Loaf Source code &gt; index.html</div>
     </div>
 
     <div class="window-body">
-        
         <div class="messenger-sidebar">
-            <div class="messenger-header">
-                <span>Direct Connections</span>
-                <span style="font-size: 0.75rem; color:#666;">v1.0</span>
-            </div>
-            
+            <div class="messenger-header"><span>Connections</span></div>
             <div class="protocol-group">
-                <div class="group-title">🟡 AOL (OSCAR) Buddies</div>
-                <div class="buddy-item">
-                    <span class="status-dot status-online"></span>
-                    <span>AimMaster99</span>
-                </div>
-                <div class="buddy-item">
-                    <span class="status-dot status-away"></span>
-                    <span>RetroCoder</span>
-                </div>
+                <div class="group-title">🟡 AOL (OSCAR)</div>
+                <div class="buddy-item"><span class="status-dot status-online"></span> AimMaster99</div>
             </div>
-
             <div class="protocol-group">
                 <div class="group-title">🟢 ICQ Network</div>
-                <div class="buddy-item">
-                    <span class="icq-flower">🌸</span>
-                    <span>UIN: 1234567</span>
-                </div>
-                <div class="buddy-item">
-                    <span class="icq-flower">🌹</span>
-                    <span>LoafServer_Host</span>
-                </div>
+                <div class="buddy-item"><span>🌸</span> UIN: 312111</div>
             </div>
         </div>
 
         <div class="main-content">
-            <div class="loaf-text">loaf here</div>
-            <div class="loaf-text">background loafsssss</div>
-        </div>
+            <div id="login-panel" class="auth-panel">
+                <div class="panel-title">Sign In</div>
+                <div class="input-group">
+                    <label>Screen Name / UIN</label>
+                    <input type="text" id="usernameInput" placeholder="Enter handle...">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••">
+                </div>
+                <button class="aero-action-btn" onclick="login()">Sign In</button>
+                <div class="auth-switch">New user? <span onclick="switchForm('register')">Create account</span></div>
+            </div>
 
+            <div id="profile-panel" class="auth-panel" style="display: none;">
+                <div class="panel-title">User Account</div>
+                <div class="profile-card">
+                    <div class="pfp-placeholder">👤</div>
+                    <div class="user-info">
+                        <div id="display-name" style="font-weight:bold;">User</div>
+                        <div style="font-size: 0.8rem;">Administrator</div>
+                    </div>
+                </div>
+                <button class="aero-action-btn" style="margin-top:20px;" onclick="location.reload()">Sign Out</button>
+            </div>
+        </div>
     </div>
 </div>
 
+<script>
+    function login() {
+        const name = document.getElementById('usernameInput').value;
+        if(name) {
+            document.getElementById('login-panel').style.display = 'none';
+            document.getElementById('profile-panel').style.display = 'block';
+            document.getElementById('display-name').innerText = name;
+        } else { alert("Please enter a Screen Name or UIN"); }
+    }
+    function switchForm(p) { /* Logic placeholder */ alert("Registration feature ready."); }
+</script>
 </body>
 </html>
