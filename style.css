@@ -41,6 +41,7 @@ body {
     background: linear-gradient(to bottom, #cedff2 0%, #a9c7e8 50%, #7da2cc 51%, #a3c5ec 100%);
     font-weight: bold; cursor: pointer;
 }
+.d-none { display: none !important; }
 
 .messenger-sidebar { width: 220px; background: #f0f4f9; padding: 10px; border-right: 1px solid #d2dbe5; }
 .buddy-item { font-size: 0.85rem; padding: 4px; cursor: pointer; }
