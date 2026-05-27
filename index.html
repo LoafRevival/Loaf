@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loaf Source Code Portal</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div id="auth-container" class="auth-container">
+        <div class="login-box">
+            <h2>Loaf Source Code</h2>
+            <p class="subtitle">Connect to loaf.oscar.open.server</p>
+            
+            <div id="error-msg" class="error-banner d-none"></div>
+            <div id="success-msg" class="success-banner d-none"></div>
+
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="login-user">Screen Name / Email</label>
+                    <input type="text" id="login-user" placeholder="e.g., CoolestPwner" required>
+                </div>
+                <div class="input-group">
+                    <label for="login-pass">Network Password</label>
+                    <input type="password" id="login-pass" placeholder="i will not leak this trust" required>
+                </div>
+                <button type="submit" class="btn-primary">Sign On</button>
+            </form>
+
+            <form id="register-form" class="d-none">
+                <div class="input-group">
+                    <label for="reg-user">Choose Screen Name</label>
+                    <input type="text" id="reg-user" placeholder="Create handle..." required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-pass">Create Password</label>
+                    <input type="password" id="reg-pass" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-success">Register Account</button>
+            </form>
+
+            <div class="auth-footer">
+                <span id="toggle-text">New Baker-talker? <a href="#" id="auth-toggle">Create an Account !!</a></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard-container" class="dashboard-container d-none">
+        <header class="dash-header">
+            <div class="logo-area">
+                <h1>Loaf Source Code</h1>
+                <span class="status-badge">Secure Node: <strong>login.loaf.server.chat</strong></span>
+            </div>
+            <div class="user-profile">
+                <span id="display-username">Baking...</span>
+                <button id="btn-logout" class="btn-disconnect">Disconnect</button>
+            </div>
+        </header>
+
+        <main class="dash-content">
+            <div class="dash-column">
+                <section class="control-panel">
+                    <h2>Network Core Control</h2>
+                    <p>Power the retro emulation engine sockets.</p>
+                    <div class="action-grid">
+                        <button class="btn-action" onclick="alert('Node status cycled successfully.')">Toggle Node State</button>
+                        <button class="btn-action" onclick="alert('Log buffers flushed cleanly.')">Flush Log Buffer</button>
+                        <button class="btn-action" onclick="alert('All integrity packet check sequences clear!')">Run Packet Check</button>
+                    </div>
+                </section>
+
+                <section class="handbook-panel" style="margin-top: 30px;">
+                    <h2> Network Connection Handbook</h2>
+                    <p class="section-desc">Follow these rules to guide external clients into your server grid:</p>
+                    
+                    <div class="handbook-step">
+                        <h3>Step 1: Windows Hosts Map</h3>
+                        <p>Open <code>C:\Windows\System32\drivers\etc\hosts</code> as Admin and append:</p>
+                        <pre>127.0.0.1   login.loaf.server.chat</pre>
+                    </div>
+
+                    <div class="handbook-step">
+                        <h3>Step 2: Client Routing</h3>
+                        <p>Inside AIM or ICQ Connection Preferences, adjust the configuration values to match:</p>
+                        <ul>
+                            <li><strong>Host / Server:</strong> <code>login.loaf.server.chat</code></li>
+                            <li><strong>Port Address:</strong> <code>5190</code></li>
+                            <li><strong>Connection Type:</strong> <code>Standard / Plain TCP</code></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <div class="dash-column">
+                <section class="status-panel">
+                    <h2>BOS Configuration</h2>
+                    <div class="stat-list">
+                        <div class="stat-item"><span>OSCAR Host Node:</span> <strong>login.loaf.server.chat</strong></div>
+                        <div class="stat-item"><span>OSCAR Routing Port:</span> <strong>Port 5190</strong></div>
+                        
+                        <hr style="border: 0; border-top: 1px solid #1e293b; margin: 10px 0;">
+                        
+                        <div class="stat-item"><span>TOC Gateway Node:</span> <strong>Port 9898</strong></div>
+                        <div class="stat-item"><span>Verification API:</span> <strong>http://127.0.0.1:8080</strong></div>
+                    </div>
+                    <div class="console-log">
+                        <h3>✨ Live LoAf Node Stream</h3>
+                        <div class="log-output">
+                            <p class="sys">[SYSTEM]: Open OSCAR Server engine monitoring retro clients...</p>
+                            <p class="success">[SUCCESS]: Core mapped cleanly to login.loaf.server.chat ✨</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
