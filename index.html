@@ -5,49 +5,61 @@
     <div id="window" style="width: 900px; height: 550px; background: rgba(10, 95, 115, 0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px 8px 0 0; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
         
         <div style="background: rgba(255,255,255,0.2); padding: 5px 10px; color: white; display: flex; justify-content: space-between;">
-            <span>📁 Loaf: Revive AIM and ICQ!</span>
-            <span>— ⬜ X</span>
+            <span>📁 Loaf: the time machine for messengers.</span>
         </div>
 
         <div style="flex-grow: 1; background: #eef3f7; display: flex;">
             <div style="width: 200px; padding: 15px; border-right: 1px solid #ccc;">
                 <b>Connections</b>
-                <div style="font-size: 0.8rem; margin-top: 10px;">🟡 AOL (OSCAR)<br>🟢 ICQ Network</div>
             </div>
 
             <div style="padding: 20px; flex-grow: 1;">
-                <div id="auth-container">
+                <div id="login-container">
                     <h3>Sign In</h3>
                     <form id="login-form">
-                        <input type="text" id="login-user" placeholder="Name" required style="display:block; margin: 10px 0; padding: 8px; width: 250px;">
-                        <input type="password" id="login-pass" placeholder="Password" required style="display:block; margin: 10px 0; padding: 8px; width: 250px;">
-                        <button type="submit" style="padding: 8px 15px;">Sign In</button>
+                        <input type="text" placeholder="Name" required style="display:block; margin: 10px 0; padding: 8px;">
+                        <input type="password" placeholder="Password" required style="display:block; margin: 10px 0; padding: 8px;">
+                        <button type="submit">Sign In</button>
                     </form>
+                    <p style="margin-top: 20px;">No account? <a href="#" id="show-register" style="color: blue; cursor: pointer;">Create an Account ✨</a></p>
                 </div>
-                
-                <div id="dashboard-container" style="display: none;">
-                    <h3 id="display-username"></h3>
-                    <button id="btn-logout" style="padding: 8px 15px;">Sign Out</button>
+
+                <div id="register-container" style="display: none;">
+                    <h3>Register New User</h3>
+                    <form id="register-form">
+                        <input type="text" placeholder="Desired Handle" required style="display:block; margin: 10px 0; padding: 8px;">
+                        <input type="password" placeholder="New Password" required style="display:block; margin: 10px 0; padding: 8px;">
+                        <button type="submit">Complete Sign Up</button>
+                    </form>
+                    <p style="margin-top: 20px;"><a href="#" id="show-login" style="color: blue; cursor: pointer;">Back to Sign In</a></p>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        const form = document.getElementById('login-form');
-        const auth = document.getElementById('auth-container');
-        const dash = document.getElementById('dashboard-container');
-        const userDisplay = document.getElementById('display-username');
+        const loginContainer = document.getElementById('login-container');
+        const registerContainer = document.getElementById('register-container');
 
-        form.addEventListener('submit', (e) => {
+        // Toggle to Registration
+        document.getElementById('show-register').addEventListener('click', (e) => {
             e.preventDefault();
-            userDisplay.textContent = "Welcome, " + document.getElementById('login-user').value;
-            auth.style.display = 'none';
-            dash.style.display = 'block';
+            loginContainer.style.display = 'none';
+            registerContainer.style.display = 'block';
         });
 
-        document.getElementById('btn-logout').addEventListener('click', () => {
-            location.reload();
+        // Toggle back to Login
+        document.getElementById('show-login').addEventListener('click', (e) => {
+            e.preventDefault();
+            registerContainer.style.display = 'none';
+            loginContainer.style.display = 'block';
+        });
+
+        // Registration Logic
+        document.getElementById('register-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Account registered! You can now use your credentials to sign in.");
+            location.reload(); 
         });
     </script>
 </body>
