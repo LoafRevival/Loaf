@@ -1,20 +1,53 @@
-body { 
-    margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center;
-    background: #f7f3eb url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2270%22 height=%2270%22 viewBox=%220 0 70 70%22%3E%3Ctext x=%2220%22 y=%2245%22 font-size=%2228%22%3E🍞%3C/text%3E%3C/svg%3E');
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-}
+body { margin: 0; font-family: Tahoma, Verdana, sans-serif; background: #fff; color: #333; }
 
-.win { 
-    width: 900px; height: 550px; background: rgba(10, 95, 115, 0.45); 
-    backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); 
-    border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+/* Навигация */
+.top-nav { 
+    background: linear-gradient(to bottom, #d2691e, #8b4513); 
+    color: white; 
+    padding: 12px 40px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+.logo { font-size: 24px; font-weight: bold; letter-spacing: 1px; }
+.top-nav nav a { color: white; text-decoration: none; font-size: 13px; }
+.top-nav nav a:hover { text-decoration: underline; }
 
-.header { background: rgba(255,255,255,0.2); padding: 5px 15px; color: white; display: flex; justify-content: space-between; }
-.body { display: flex; flex-grow: 1; background: #eef3f7; }
-.sidebar { width: 220px; padding: 20px; border-right: 1px solid #ccc; }
-.content { padding: 40px; flex-grow: 1; }
-.box { background: white; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
-input { display: block; width: 100%; margin: 10px 0; padding: 8px; }
-.status-light { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+/* Контейнер */
+.container { display: flex; padding: 25px; max-width: 1100px; margin: auto; min-height: 500px; }
+
+/* Боковая панель */
+.sidebar { width: 230px; margin-right: 30px; }
+.sidebar-box { background: #fdf5e6; border: 1px solid #dcdcdc; padding: 15px; border-radius: 4px; }
+.sidebar-box h3 { font-size: 16px; color: #8b4513; margin-top: 0; border-bottom: 1px solid #e0c0a0; }
+.download-item { display: flex; align-items: center; margin-bottom: 15px; font-size: 12px; }
+.download-item img { margin-right: 10px; }
+.download-item a { color: #0055aa; text-decoration: none; line-height: 1.3; }
+
+/* Основной блок */
+.main-content { flex-grow: 1; border: 1px solid #70a8d1; padding: 25px; border-radius: 8px; background: #fafafa; }
+h1 { color: #b35900; font-size: 22px; border-bottom: 2px solid #b35900; padding-bottom: 10px; margin-top: 0; }
+p { font-size: 14px; line-height: 1.6; color: #555; }
+
+/* Форма регистрации */
+.reg-form-container { margin-top: 25px; background: #fff; border: 1px solid #e0e0e0; padding: 20px; border-radius: 4px; }
+.reg-table { width: 100%; border-collapse: collapse; }
+.reg-table td { padding: 10px; font-size: 14px; }
+.label { width: 35%; font-weight: bold; color: #8b4513; text-align: right; padding-right: 20px; }
+.reg-table input, .reg-table select { width: 100%; padding: 6px; border: 1px solid #ccc; font-family: Tahoma; }
+.btn-reg { 
+    background: linear-gradient(to bottom, #ff9900, #b35900); 
+    color: white; 
+    border: 1px solid #8b4513; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+}
+.btn-reg:hover { background: #d2691e; }
+
+/* Футер */
+.footer { margin-top: 50px; background: #8b4513; color: #f5deb3; padding: 20px; text-align: center; font-size: 11px; }
+.footer-links { margin-top: 10px; }
+.footer-links a { color: #fff; text-decoration: none; margin: 0 10px; }
