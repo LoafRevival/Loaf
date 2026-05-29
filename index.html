@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Loaf Timeback machine</title>
+    <title>Loaf</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -10,25 +10,74 @@
     <header class="top-nav">
         <div class="logo">Loaf</div>
         <nav>
-            <a href="#">О проекте</a> | <a href="#">Загрузить</a> | 
+            <a href="index.html">Главная</a> | <a href="#">Загрузить</a> | 
             <a href="#">Протоколы</a> | <a href="#">FAQ</a> | 
-            <a href="#">Войти</a> | <a href="#">Регистрация</a>
+            <a href="#">Войти</a> | <a href="register.html"><b>Регистрация</b></a>
         </nav>
     </header>
 
     <main class="container">
         <aside class="sidebar">
-            <h3>Загрузить:</h3>
-            <div class="download-item">
-                <img src="icon.png" alt="icon">
-                <a href="#">AOL (OSCAR)<br>для Windows</a>
+            <div class="sidebar-box">
+                <h3>Загрузить:</h3>
+                <div class="download-item">
+                    <img src="https://img.icons8.com/color/48/000000/windows-10.png" style="width:24px;" alt="win">
+                    <a href="#">Loaf <br>для Windows</a>
+                </div>
+                <div class="download-item">
+                    <img src="https://img.icons8.com/color/48/000000/android-os.png" style="width:24px;" alt="apk">
+                    <a href="#">Loaf Mobile<br>для Android</a>
+                </div>
             </div>
         </aside>
 
         <section class="main-content">
-            <h1>Ренессанс ретро-мессенджеров: Loaf</h1>
-            <p>Начните разговаривать со своими друзьями и родными, используя совместимые OSCAR клиенты — просто выберите подходящую версию.</p>
-            </section>
+            <h1>Регистрация нового пользователя</h1>
+            <p>Присоединяйтесь к сети Loaf! После регистрации вы получите уникальный номер (UIN) и сможете использовать свой Screen Name для входа через старые клиенты.</p>
+
+            <div class="reg-form-container">
+                <form id="registration-form">
+                    <table class="reg-table">
+                        <tr>
+                            <td class="label">Screen Name:</td>
+                            <td><input type="text" name="username" required placeholder="Напр: Cool_User_2004"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">E-mail:</td>
+                            <td><input type="email" name="email" required placeholder="example@mail.ru"></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Пароль:</td>
+                            <td><input type="password" name="pass" required></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Повтор пароля:</td>
+                            <td><input type="password" name="pass2" required></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Секретный вопрос:</td>
+                            <td>
+                                <select name="question">
+                                    <option>Имя первого питомца</option>
+                                    <option>Девичья фамилия матери</option>
+                                    <option>Марка первой машины</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">Ответ:</td>
+                            <td><input type="text" name="answer" required></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button type="submit" class="btn-reg">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -38,5 +87,6 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
