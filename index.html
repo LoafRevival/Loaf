@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <title>Loaf Messenger</title>
     <style>
-        body { background: #008080; font-family: 'MS Sans Serif', sans-serif; }
-        .window { 
-            width: 300px; background: #c0c0c0; border: 2px outset #ffffff; 
-            padding: 2px; margin: 50px auto; 
-        }
-        .title-bar { background: #000080; color: white; padding: 3px; font-weight: bold; }
-        .content { padding: 15px; }
-        input { border: 2px inset #ffffff; margin-bottom: 10px; width: 90%; }
-        button { cursor: pointer; }
+        body { background: #008080; font-family: 'Tahoma', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .window { background: #c0c0c0; border: 2px outset #ffffff; padding: 2px; width: 300px; }
+        .title-bar { background: linear-gradient(to right, #000080, #1084d0); color: white; padding: 3px; font-weight: bold; font-size: 12px; }
+        .content { padding: 20px; text-align: center; }
+        input { border: 2px inset #ffffff; width: 85%; margin-bottom: 10px; padding: 4px; }
+        button { border: 2px outset #ffffff; padding: 5px 15px; cursor: pointer; font-weight: bold; }
+        button:active { border-style: inset; }
+        .hidden { display: none; }
+        .link { font-size: 11px; color: blue; text-decoration: underline; cursor: pointer; }
     </style>
 </head>
 <body>
 
-<div class="window">
-    <div class="title-bar">Sign In</div>
+<div class="window" id="main-window">
+    <div class="title-bar">Loaf Login</div>
     <div class="content" id="login-view">
-        <form onsubmit="return false;">
+        <form id="login-form">
             <input type="text" id="user" placeholder="Screen Name"><br>
             <input type="password" id="pass" placeholder="Password"><br>
-            <button id="btn-login">Sign In</button>
-            <p style="font-size: 11px; cursor: pointer; color: blue; text-decoration: underline;" 
-               onclick="showReg()">Create an account</p>
+            <button type="submit">Sign In</button>
         </form>
+        <p class="link" onclick="toggleView()">Create an account</p>
+    </div>
+
+    <div class="content hidden" id="reg-view">
+        <form id="reg-form">
+            <input type="text" id="reg-user" placeholder="New Screen Name"><br>
+            <input type="password" id="reg-pass" placeholder="Password"><br>
+            <button type="submit">Register</button>
+        </form>
+        <p class="link" onclick="toggleView()">Back to Login</p>
     </div>
 </div>
 
